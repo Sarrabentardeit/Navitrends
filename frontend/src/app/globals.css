@@ -1,0 +1,218 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-navy: #1c3a8a;
+  --color-navy-deep: #0a1638;
+  --color-red: #e31c23;
+  --color-cyan: #71cbcc;
+  --font-sans: var(--font-plex);
+  --font-serif: var(--font-cormorant);
+}
+
+:root {
+  --background: #fbfbfd;
+  --foreground: #0a1638;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-plex), "IBM Plex Sans", system-ui, sans-serif;
+  line-height: 1.65;
+}
+
+::selection {
+  background: #1c3a8a;
+  color: #fff;
+}
+
+.wrap {
+  width: min(1240px, calc(100% - 3rem));
+  margin-inline: auto;
+}
+
+@media (max-width: 640px) {
+  .wrap {
+    width: calc(100% - 2rem);
+  }
+}
+
+.serif {
+  font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  font-weight: 500;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  height: 3rem;
+  padding: 0 1.4rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.btn-red {
+  background: #e31c23;
+  color: #fff;
+  border-color: #e31c23;
+}
+
+.btn-red:hover {
+  background: #c4161c;
+}
+
+.btn-line {
+  background: transparent;
+  color: #0a1638;
+  border-color: #0a1638;
+}
+
+.btn-line:hover {
+  background: #0a1638;
+  color: #fff;
+}
+
+.kicker {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #1c3a8a;
+}
+
+.field {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #d7dce8;
+  padding: 0.8rem 0;
+  font-size: 0.95rem;
+  color: #0a1638;
+  outline: none;
+  font-family: inherit;
+}
+
+.field:focus {
+  border-bottom-color: #e31c23;
+}
+
+textarea.field {
+  resize: vertical;
+  min-height: 7rem;
+}
+
+.box-field {
+  width: 100%;
+  background: #f4f6fb;
+  border: 1px solid #e4e8f1;
+  padding: 0.85rem 1rem;
+  font-size: 0.9375rem;
+  color: #0a1638;
+  outline: none;
+  font-family: inherit;
+}
+
+.box-field:focus {
+  border-color: #1c3a8a;
+  background: #fff;
+}
+
+textarea.box-field {
+  resize: vertical;
+  min-height: 6.5rem;
+}
+
+@keyframes dash {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes pulse-node {
+  0%, 100% { opacity: 0.45; r: 14; }
+  50% { opacity: 0.15; r: 22; }
+}
+
+.schematic-line {
+  stroke-dasharray: 420;
+  stroke-dashoffset: 420;
+  animation: dash 2.8s ease forwards;
+}
+
+.schematic-line.d2 { animation-delay: 0.35s; }
+.schematic-line.d3 { animation-delay: 0.7s; }
+.schematic-line.d4 { animation-delay: 1.05s; }
+.schematic-line.d5 { animation-delay: 1.4s; }
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: marquee 30s linear infinite;
+}
+
+/* --- Maquette A --- */
+.brand-bar {
+  display: flex;
+  height: 4px;
+}
+.brand-bar span:nth-child(1) { flex: 1.2; background: #e31c23; }
+.brand-bar span:nth-child(2) { flex: 2; background: #1c3a8a; }
+.brand-bar span:nth-child(3) { flex: 0.8; background: #71cbcc; }
+
+.hero-stage {
+  position: relative;
+  background:
+    radial-gradient(900px 420px at 85% 10%, rgba(113, 203, 204, 0.18), transparent 55%),
+    radial-gradient(700px 380px at 8% 90%, rgba(227, 28, 35, 0.16), transparent 50%),
+    linear-gradient(165deg, #07102f 0%, #1c3a8a 58%, #14275f 100%);
+  overflow: hidden;
+}
+
+.hero-stage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.55), transparent 88%);
+  pointer-events: none;
+}
+
+.btn-ghost-light {
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  height: 3rem;
+  padding: 0 1.4rem;
+}
+
+.btn-ghost-light:hover {
+  background: #ffffff;
+  color: #1c3a8a;
+}
+
+.kicker-light {
+  color: #71cbcc;
+}
+
+.shot-grade {
+  filter: saturate(0.92) contrast(1.05);
+}
