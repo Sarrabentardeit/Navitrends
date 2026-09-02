@@ -1,9 +1,13 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
 import WordCycle from "@/components/WordCycle";
 import SystemsCanvas from "@/components/SystemsCanvas";
+
+const fade = {
+  hidden: { opacity: 0, y: 18 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] } },
+};
 
 export default function HeroSection() {
   return (
@@ -12,24 +16,37 @@ export default function HeroSection() {
         <div className="flex items-center">
           <motion.div
             className="w-full max-w-[640px] ml-auto px-8 lg:px-12 xl:pr-16 py-16 lg:py-20"
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: false, amount: 0.45 }}
+            variants={{
+              hidden: {},
+              show: { transition: { staggerChildren: 0.12 } },
+            }}
           >
-            <p className="kicker mb-5">Systems engineering · London</p>
-            <h1 className="serif text-[2.7rem] sm:text-[3.6rem] xl:text-[4.4rem] leading-[1.04] tracking-tight text-[#0a1638]">
+            <motion.p variants={fade} className="kicker mb-5">
+              Systems engineering · London
+            </motion.p>
+            <motion.h1
+              variants={fade}
+              className="serif text-[2.7rem] sm:text-[3.6rem] xl:text-[4.4rem] leading-[1.04] tracking-tight text-[#0a1638]"
+            >
               We engineer
               <WordCycle />
               that scale.
-            </h1>
-            <p className="mt-7 max-w-md text-[#4b5573] leading-relaxed">
+            </motion.h1>
+            <motion.p variants={fade} className="mt-7 max-w-md text-[#4b5573] leading-relaxed">
               We map how the operation actually runs. Then we put ERP,
               automation and reporting underneath it — one team, one architecture.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/contact" className="btn btn-red">Talk to us</Link>
-              <Link href="/case-studies" className="btn btn-line">See the work</Link>
-            </div>
+            </motion.p>
+            <motion.div variants={fade} className="mt-8 flex flex-wrap gap-3">
+              <a href="#contact" className="btn btn-red">
+                Talk to us <span className="btn-chevron" aria-hidden>→</span>
+              </a>
+              <a href="#case-studies" className="btn btn-line">
+                See the work <span className="btn-chevron" aria-hidden>→</span>
+              </a>
+            </motion.div>
           </motion.div>
         </div>
         <SystemsCanvas />

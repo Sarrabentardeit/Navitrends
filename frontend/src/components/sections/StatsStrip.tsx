@@ -21,7 +21,7 @@ export default function StatsStrip() {
             }`}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            viewport={{ once: true, margin: "-60px" }}
+            viewport={{ once: false, margin: "-60px" }}
             transition={{ duration: 0.4, delay: i * 0.08, ease: "easeOut" }}
           >
             <p className="serif text-[2.35rem] leading-none text-[#1c3a8a]">{item.value}</p>

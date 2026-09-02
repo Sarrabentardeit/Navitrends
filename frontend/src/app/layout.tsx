@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Sans, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
-import VersionSwitch from "@/components/VersionSwitch";
 
 const plex = IBM_Plex_Sans({
   subsets: ["latin"],
@@ -19,9 +18,9 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "Navitrends UK — ERP, Automation & Digital Engineering",
+  title: "Navitrends UK | Operational Systems, Automation, Data & AI",
   description:
-    "London-based systems engineering firm. We design and implement ERP, automation and business intelligence around how your organisation actually operates.",
+    "Navitrends UK helps SMEs and industrial organisations digitise operations, connect systems, automate workflows and apply AI to measurable business problems.",
   metadataBase: new URL("https://navitrends.uk"),
 };
 
@@ -31,10 +30,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${plex.variable} ${cormorant.variable} h-full`}>
+    <html lang="en" data-scroll-behavior="smooth" className={`${plex.variable} ${cormorant.variable} h-full`}>
       <body className="min-h-full flex flex-col">
         {children}
-        <VersionSwitch />
       </body>
     </html>
   );

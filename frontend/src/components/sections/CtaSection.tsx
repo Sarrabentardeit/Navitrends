@@ -2,21 +2,15 @@
 
 import { useState } from "react";
 import Image from "next/image";
-
-const topics = [
-  "ERP",
-  "Automation",
-  "Security",
-  "Software",
-  "Partnership",
-];
+import { motion } from "framer-motion";
 
 export default function CtaSection() {
   const [sent, setSent] = useState(false);
-  const [topic, setTopic] = useState("ERP");
+  const [error, setError] = useState<"validation" | "server" | null>(null);
+  const [submitting, setSubmitting] = useState(false);
 
   return (
-    <section className="relative min-h-[720px] flex items-end">
+    <section id="contact" className="relative min-h-[720px] flex items-end scroll-mt-[4.4rem]">
       <Image
         src="/images/software-dashboard.jpg"
         alt=""
@@ -30,23 +24,28 @@ export default function CtaSection() {
       <div className="relative z-10 wrap w-full py-16 lg:py-20 grid lg:grid-cols-12 gap-10 items-end">
         <div className="lg:col-span-6 text-white pb-2">
           <p className="text-[0.7rem] font-semibold tracking-[0.22em] uppercase text-[#71cbcc] mb-4">
-            ERP · Automation · Security
+            Get Started
           </p>
-          <h2 className="serif text-[3rem] sm:text-[3.6rem] leading-[1.05] max-w-[12ch]">
-            Tell us how the operation runs.
+          <h2 className="serif text-[3rem] sm:text-[3.6rem] leading-[1.05] max-w-[14ch]">
+            Let’s find one problem worth solving.
           </h2>
           <p className="mt-6 max-w-md text-white/75 leading-relaxed">
-            A short note is enough. We reply within a working day — and we will
-            say if it is not a fit.
+            30-Minute Operational Digitalisation Diagnostic. One process. One bottleneck. One KPI. One measurable opportunity.
+          </p>
+          <p className="mt-4 max-w-md text-white/55 text-sm">
+            No technology pitch before we understand the problem.
           </p>
           <p className="mt-8 text-sm text-white/80">
-            <a href="mailto:contact@navitrends.uk" className="hover:text-[#71cbcc]">
-              contact@navitrends.uk
+            <a href="mailto:contact@navitrends.com" className="hover:text-[#71cbcc]">
+              contact@navitrends.com
             </a>
             <span className="mx-3 text-white/30">|</span>
-            <a href="tel:+447418361296" className="hover:text-[#71cbcc]">
-              +44 7418 361296
+            <a href="tel:+442039962137" className="hover:text-[#71cbcc]">
+              +44 20 3996 2137
             </a>
+          </p>
+          <p className="mt-3 text-[12px] text-white/50">
+            Navitrends Ltd · 5 Brayford Square, London, United Kingdom E1 0SG
           </p>
         </div>
 
@@ -54,60 +53,133 @@ export default function CtaSection() {
           {sent ? (
             <div className="bg-white p-10 text-[#0a1638]">
               <p className="serif text-3xl leading-snug">
-                Received. We will come back within a working day.
+                Thank you — your request has been received. We will be in touch shortly to confirm your diagnostic call.
               </p>
             </div>
           ) : (
-            <form
-              className="bg-white text-[#0a1638] p-7 sm:p-8 shadow-[0_24px_80px_rgba(10,22,56,0.28)]"
-              onSubmit={(e) => {
+            <motion.form
+              className="relative overflow-hidden bg-white text-[#0a1638] p-7 sm:p-8 shadow-[0_24px_80px_rgba(10,22,56,0.28)]"
+              noValidate
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.35 }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              onSubmit={async (e) => {
                 e.preventDefault();
-                setSent(true);
+                if (submitting) return;
+                const data = new FormData(e.currentTarget);
+                const payload = {
+                  name: String(data.get("name") || "").trim(),
+                  company: String(data.get("company") || "").trim(),
+                  email: String(data.get("email") || "").trim(),
+                  phone: String(data.get("phone") || "").trim(),
+                  role: String(data.get("role") || "").trim(),
+                  companySize: String(data.get("companySize") || "").trim(),
+                  problem: String(data.get("problem") || "").trim(),
+                  systems: String(data.get("systems") || "").trim(),
+                  preferredContact: String(data.get("preferredContact") || "").trim(),
+                  website: String(data.get("website") || "").trim(),
+                };
+                if (!payload.name || !payload.company || !payload.email) {
+                  setError("validation");
+                  return;
+                }
+                setError(null);
+                setSubmitting(true);
+                try {
+                  const res = await fetch("/api/diagnostic", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload),
+                  });
+                  if (!res.ok) throw new Error("send failed");
+                  setSent(true);
+                } catch {
+                  setError("server");
+                } finally {
+                  setSubmitting(false);
+                }
               }}
             >
-              <p className="serif text-2xl mb-1">Start a conversation</p>
+              <motion.span
+                aria-hidden
+                className="absolute left-0 top-0 h-[3px] bg-[#e31c23]"
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: false }}
+                style={{ originX: 0, width: "100%" }}
+                transition={{ duration: 0.9, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+              />
+              <p className="serif text-2xl mb-1">Book a 30-Minute Diagnostic</p>
               <p className="text-sm text-[#5b6178] mb-7">
-                No discovery-call theatre.
+                We will review your request before the call so the discussion can focus on your operational problem.
               </p>
 
-              <div className="space-y-4">
+              <div className="space-y-3">
                 <div className="grid grid-cols-2 gap-3">
-                  <input required name="name" placeholder="Name" className="box-field" />
-                  <input required type="email" name="email" placeholder="Work email" className="box-field" />
+                  <input required name="name" placeholder="Name" autoComplete="name" className="box-field" />
+                  <input required name="company" placeholder="Company" autoComplete="organization" className="box-field" />
                 </div>
-                <input type="tel" name="phone" placeholder="Telephone" className="box-field" />
-                <input type="hidden" name="topic" value={topic} />
-
-                <div className="flex flex-wrap gap-1.5">
-                  {topics.map((item) => (
-                    <button
-                      key={item}
-                      type="button"
-                      onClick={() => setTopic(item)}
-                      className={`px-3 py-1.5 text-[11px] tracking-wide ${
-                        topic === item
-                          ? "bg-[#e31c23] text-white"
-                          : "bg-[#f4f6fb] text-[#4b5573] hover:bg-[#e6e9f2]"
-                      }`}
-                    >
-                      {item}
-                    </button>
-                  ))}
+                <div className="grid grid-cols-2 gap-3">
+                  <input required type="email" name="email" placeholder="Work email" autoComplete="email" className="box-field" />
+                  <input type="tel" name="phone" placeholder="Phone (optional)" autoComplete="tel" className="box-field" />
                 </div>
-
+                <div className="grid grid-cols-2 gap-3">
+                  <input name="role" placeholder="Role, e.g. Operations Director" className="box-field" />
+                  <select name="companySize" className="box-field" defaultValue="">
+                    <option value="">Company size</option>
+                    <option>1–10</option>
+                    <option>11–50</option>
+                    <option>51–200</option>
+                    <option>201–500</option>
+                    <option>500+</option>
+                  </select>
+                </div>
                 <textarea
-                  required
-                  name="message"
-                  placeholder="What is the problem?"
-                  rows={4}
-                  className="box-field"
+                  name="problem"
+                  placeholder="What operational problem would you like to solve?"
+                  rows={3}
+                  className="box-field min-h-[5.5rem]"
                 />
-
-                <button type="submit" className="btn btn-red w-full">
-                  Send
+                <div className="grid grid-cols-2 gap-3">
+                  <input name="systems" placeholder="Current systems / ERP" className="box-field" />
+                  <select name="preferredContact" className="box-field" defaultValue="">
+                    <option value="">Preferred contact</option>
+                    <option>Email</option>
+                    <option>Phone</option>
+                    <option>Either</option>
+                  </select>
+                </div>
+                <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden>
+                  <label>
+                    Website
+                    <input type="text" name="website" tabIndex={-1} autoComplete="off" />
+                  </label>
+                </div>
+                <button type="submit" className="btn btn-red w-full" disabled={submitting}>
+                  {submitting ? "Sending…" : "Request My Diagnostic"}
+                  {!submitting && (
+                    <span className="btn-chevron" aria-hidden>
+                      →
+                    </span>
+                  )}
                 </button>
+                {error === "validation" && (
+                  <p className="text-sm text-[#e31c23]">
+                    Please complete your name, company and work email.
+                  </p>
+                )}
+                {error === "server" && (
+                  <p className="text-sm text-[#e31c23]">
+                    We could not send your request. Please try again or email{" "}
+                    <a href="mailto:contact@navitrends.com" className="underline">
+                      contact@navitrends.com
+                    </a>
+                    .
+                  </p>
+                )}
               </div>
-            </form>
+            </motion.form>
           )}
         </div>
       </div>

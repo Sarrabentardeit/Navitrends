@@ -1,70 +1,80 @@
-import Link from "next/link";
 import SectionHead from "@/components/SectionHead";
 
-const cases = [
+const featured = [
   {
-    n: "01",
-    stack: "Odoo ERP",
-    sector: "Plastics manufacturing",
-    title: "ERP implementation for plastics manufacturing",
-    text: "A plastics manufacturer wanted one operational picture across production, inventory and finance. We implemented Odoo so the plant and the ledger run on the same system.",
-    href: "/case-studies/plastics-manufacturing",
+    tag: "Audit Workflow Agent",
+    place: "Alexann · France",
+    title: "From manual audit reports to automated digital execution.",
+    challenge:
+      "audit reports required classification and distribution between audit organisations / laboratories and their clients.",
+    solution:
+      "automated classification, automated routing and report distribution connecting organisations and clients.",
+    outcome:
+      "Measured through: processing time · automated classification rate · routing time · manual interventions.",
   },
   {
-    n: "02",
-    stack: "n8n · Automation",
-    sector: "Business development",
-    title: "AI sales prospecting agent",
-    text: "A business development team was spending the morning building lists. We built an agent that identifies, enriches and sequences prospects.",
-    href: "/case-studies/ai-sales-agent",
+    tag: "Quotation Intelligence",
+    place: "GS Geo · Saudi Arabia",
+    title: "Six years of quotations become reusable knowledge.",
+    challenge: "preparing quotations required searching and reusing historical commercial knowledge.",
+    solution: "knowledge extraction, similar quotation retrieval, AI-assisted generation and human validation.",
+    outcome: "Faster quotation preparation while preserving company know-how.",
+  },
+];
+
+const compact = [
+  {
+    tag: "Zero-Paper · ISO 9001",
+    place: "M-Pack",
+    text: "Operational workflows digitalised around ISO 9001 requirements.",
   },
   {
-    n: "03",
-    stack: "Automation · reporting",
-    sector: "Food safety & hygiene",
-    title: "Laboratory report automation",
-    text: "A food hygiene inspection firm needed audit packs generated from lab data the same afternoon — without a clerk in the middle.",
-    href: "/case-studies/food-safety-automation",
+    tag: "Metrology Laboratory",
+    place: "IMC",
+    text: "Zero-paper digitalisation structured around ISO-driven metrology requirements.",
+  },
+  {
+    tag: "Digital Twin · In Development",
+    place: "Extrusion Process",
+    text: "Process model linked to operational data, designed to support simulation and decision support.",
   },
 ];
 
 export default function CaseStudiesSection() {
   return (
-    <section className="bg-[#fbfbfd]">
+    <section id="case-studies" className="bg-white">
       <div className="wrap py-20 lg:py-28">
-        <SectionHead n="03" kicker="Selected work" title="What the work looks like when it is finished.">
-          <Link href="/case-studies" className="text-sm text-[#e31c23] border-b border-[#e31c23] pb-px">
-            All case studies
-          </Link>
-        </SectionHead>
+        <SectionHead n="04" kicker="Case Studies" title="Evidence, not promises." />
 
-        <div>
-          {cases.map((item) => (
-            <article
-              key={item.href}
-              className="grid lg:grid-cols-12 gap-6 lg:gap-10 py-10 lg:py-12 border-t border-[#e6e9f2] last:border-b"
-            >
-              <div className="lg:col-span-3">
-                <p className="text-[11px] tracking-[0.18em] text-[#e31c23]">{item.n}</p>
-                <p className="mt-3 text-sm text-[#1c3a8a]">{item.stack}</p>
-                <p className="mt-1 text-sm text-[#8b91a5]">{item.sector}</p>
-              </div>
-              <div className="lg:col-span-6">
-                <h3 className="serif text-[1.7rem] sm:text-[1.95rem] leading-snug text-[#0a1638]">
-                  {item.title}
-                </h3>
-                <p className="mt-4 text-[#4b5573] leading-relaxed max-w-xl">
-                  {item.text}
-                </p>
-              </div>
-              <div className="lg:col-span-3 lg:flex lg:items-end lg:justify-end">
-                <Link
-                  href={item.href}
-                  className="text-sm text-[#0a1638] border-b border-[#0a1638] pb-px hover:text-[#e31c23] hover:border-[#e31c23]"
-                >
-                  Read the case
-                </Link>
-              </div>
+        <div className="grid lg:grid-cols-2 gap-6">
+          {featured.map((item) => (
+            <article key={item.place} className="border border-[#e6e9f2] bg-[#fbfbfd] p-8 h-full">
+              <p className="inline-block bg-[#e31c23]/8 text-[#e31c23] text-[11px] tracking-wide font-semibold px-2.5 py-1">
+                {item.tag}
+              </p>
+              <p className="mt-5 text-[11px] tracking-[0.18em] uppercase text-[#8b91a5]">{item.place}</p>
+              <h3 className="serif text-[1.75rem] leading-snug text-[#0a1638] mt-2">{item.title}</h3>
+              <p className="mt-5 text-sm text-[#4b5573] leading-relaxed">
+                <strong className="text-[#0a1638]">Challenge:</strong> {item.challenge}
+              </p>
+              <p className="mt-3 text-sm text-[#4b5573] leading-relaxed">
+                <strong className="text-[#0a1638]">Solution:</strong> {item.solution}
+              </p>
+              <p className="mt-6 pt-5 border-t border-[#e6e9f2] text-sm font-semibold text-[#0a1638]">
+                {item.outcome}
+              </p>
+            </article>
+          ))}
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-6 mt-6">
+          {compact.map((item) => (
+            <article key={item.place} className="border border-[#e6e9f2] p-7 h-full">
+              <p className="inline-block bg-[#e31c23]/8 text-[#e31c23] text-[11px] tracking-wide font-semibold px-2.5 py-1">
+                {item.tag}
+              </p>
+              <p className="mt-5 text-[11px] tracking-[0.18em] uppercase text-[#8b91a5]">{item.place}</p>
+              <p className="mt-3 text-[#4b5573] leading-relaxed">{item.text}</p>
             </article>
           ))}
         </div>

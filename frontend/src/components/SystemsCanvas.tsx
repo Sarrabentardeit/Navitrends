@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
 
 const nodes = [
   { id: "erp", x: 120, y: 92, label: "ERP", fill: "#e31c23" },
@@ -18,8 +19,21 @@ const lines = [
 ];
 
 export default function SystemsCanvas() {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { amount: 0.4 });
+  const [playId, setPlayId] = useState(0);
+  const wasIn = useRef(false);
+
+  useEffect(() => {
+    if (inView && !wasIn.current) setPlayId((id) => id + 1);
+    wasIn.current = inView;
+  }, [inView]);
+
   return (
-    <div className="relative flex min-h-[460px] items-center justify-center overflow-hidden bg-[#0a1638] px-8 py-12 lg:min-h-full">
+    <div
+      ref={ref}
+      className="relative flex min-h-[460px] items-center justify-center overflow-hidden bg-[#0a1638] px-8 py-12 lg:min-h-full"
+    >
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.07]"
         style={{
@@ -30,6 +44,7 @@ export default function SystemsCanvas() {
       />
 
       <svg
+        key={playId}
         viewBox="0 0 440 380"
         className="relative z-10 w-full max-w-[460px]"
         preserveAspectRatio="xMidYMid meet"
@@ -47,6 +62,18 @@ export default function SystemsCanvas() {
             style={{ animation: `dash 2.4s ${line.delay}s ease forwards` }}
           />
         ))}
+
+        <path
+          id="circuit"
+          d="M120 92 L220 188 L320 92 L220 188 L120 292 L220 188 L320 292 L220 188"
+          fill="none"
+          stroke="none"
+        />
+        <circle r="4.5" fill="#ffffff">
+          <animateMotion dur="8s" repeatCount="indefinite" begin="1.2s">
+            <mpath href="#circuit" />
+          </animateMotion>
+        </circle>
 
         {nodes.map((n, i) => (
           <g key={n.id}>

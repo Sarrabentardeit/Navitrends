@@ -1,11 +1,9 @@
-import Link from "next/link";
 import Logo from "@/components/Logo";
 
 const places = [
-  { region: "United Kingdom", detail: "London E1" },
-  { region: "Europe", detail: "FR · DE · Benelux" },
-  { region: "North Africa", detail: "Tunisia" },
-  { region: "Middle East", detail: "Gulf" },
+  { region: "United Kingdom", detail: "5 Brayford Square, London E1 0SG" },
+  { region: "Europe", detail: "United Kingdom · France" },
+  { region: "North Africa", detail: "Tunisia engineering hub" },
 ];
 
 export default function Footer() {
@@ -24,17 +22,22 @@ export default function Footer() {
         </div>
 
         <nav className="flex flex-wrap gap-5 text-sm text-[#4b5573]">
-          <Link href="/case-studies" className="hover:text-[#e31c23]">Work</Link>
-          <Link href="/about" className="hover:text-[#e31c23]">Firm</Link>
-          <Link href="/careers" className="hover:text-[#e31c23]">Careers</Link>
-          <Link href="/contact" className="hover:text-[#e31c23]">Contact</Link>
+          <a href="#services" className="hover:text-[#e31c23]">
+            Services
+          </a>
+          <a href="#case-studies" className="hover:text-[#e31c23]">
+            Case Studies
+          </a>
+          <a href="#contact" className="hover:text-[#e31c23]">
+            Contact
+          </a>
         </nav>
       </div>
       <div className="wrap py-4 border-t border-[#e6e9f2] flex justify-between text-[11px] text-[#8b91a5]">
-        <p>© {new Date().getFullYear()} Navitrends Ltd. Registered in England & Wales.</p>
+        <p>© {new Date().getFullYear()} Navitrends Ltd · 5 Brayford Square, London, United Kingdom E1 0SG</p>
         <div className="flex gap-5">
-          <Link href="#">Privacy</Link>
-          <Link href="#">Terms</Link>
+          <a href="#contact">Privacy</a>
+          <a href="#contact">Terms</a>
         </div>
       </div>
     </footer>

@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Navitrends UK | Operational Systems, Automation, Data &amp; AI</title>
+<meta name="description" content="Navitrends UK helps SMEs and industrial organisations digitise operations, connect systems, automate workflows and apply AI to measurable business problems.">
+<link rel="canonical" href="https://www.navitrends.co.uk/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Navitrends UK">
+<meta property="og:title" content="Navitrends UK | Operational Systems, Automation, Data & AI">
+<meta property="og:description" content="Industrial knowledge. Digital systems. Applied intelligence. Book a 30-minute operational digitalisation diagnostic.">
+<meta property="og:url" content="https://www.navitrends.co.uk/">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Navitrends UK",
+  "legalName": "Navitrends Ltd",
+  "url": "https://www.navitrends.co.uk/",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "5 Brayford Square",
+    "addressLocality": "London",
+    "postalCode": "E1 0SG",
+    "addressCountry": "GB"
+  },
+  "description": "Navitrends UK helps SMEs and industrial organisations digitise operations, connect systems, automate workflows and apply AI to measurable business problems.",
+  "areaServed": ["United Kingdom", "France", "Europe"]
+}
+</script>
+
+<style>
+:root{
+  --navy:#071A2B;
+  --navy-2:#0B2742;
+  --blue:#1565C0;
+  --accent:#2D8CFF;
+  --accent-soft:#EAF3FF;
+  --white:#FFFFFF;
+  --cream:#F5F7FA;
+  --grey:#8A96A3;
+  --grey-mid:#5F6D7A;
+  --line:#DCE3EA;
+  --text:#14212E;
+  --text-inverse:#F8FBFF;
+  --gold:#B9A16B;
+  --font-display:"Source Serif 4",Georgia,serif;
+  --font-sans:"Inter",Arial,sans-serif;
+  --shadow:0 18px 50px rgba(7,26,43,.10);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--font-sans);color:var(--text);background:var(--white);line-height:1.6}
+a{color:inherit;text-decoration:none}
+ul{padding-left:1.2rem}
+.wrap{width:min(1180px,calc(100% - 40px));margin:0 auto}
+.section{padding:92px 0}
+.section--white{background:#fff}
+.section--cream{background:var(--cream)}
+.section--dark,.callout-dark,.cta-final{background:var(--navy);color:var(--text-inverse)}
+.nav{position:sticky;top:0;z-index:1000;background:rgba(7,26,43,.96);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.08)}
+.nav .wrap{height:76px;display:flex;align-items:center;gap:28px}
+.logo{font-weight:800;letter-spacing:.08em;color:#fff;white-space:nowrap}.logo span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:23px;margin-left:auto;color:#d8e3ec;font-size:13px}
+.nav-links a:hover{color:#fff}
+.nav-cta{display:flex;align-items:center;gap:14px}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:7px;padding:13px 19px;font-weight:700;font-size:14px;border:1px solid transparent;transition:.2s ease;cursor:pointer}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 8px 25px rgba(45,140,255,.22)}
+.btn-primary:hover{transform:translateY(-1px);background:#177cf1}
+.btn-ghost-dark{border-color:rgba(255,255,255,.25);color:#fff}
+.btn-ghost-light{border-color:#b9c4ce;color:var(--text)}
+.burger{display:none;background:none;border:0;width:38px;height:38px;padding:7px;cursor:pointer}
+.burger span{display:block;height:2px;background:#fff;margin:5px 0}
+.mobile-menu{display:none;position:fixed;z-index:999;top:76px;left:0;right:0;background:var(--navy);padding:22px 24px 30px;box-shadow:var(--shadow)}
+.mobile-menu.active{display:grid;gap:18px}.mobile-menu a{color:#fff}
+.hero{background:
+radial-gradient(circle at 82% 20%,rgba(45,140,255,.19),transparent 29%),
+linear-gradient(135deg,#071A2B 0%,#0B2742 58%,#071A2B 100%);
+color:#fff;padding:115px 0 75px;min-height:720px;display:flex;align-items:center}
+.hero-inner{max-width:1040px}
+.eyebrow{text-transform:uppercase;letter-spacing:.14em;font-size:11px;font-weight:800;color:var(--accent);margin:0 0 18px}
+.h1,.h2,.h3{font-family:var(--font-display);margin:0;line-height:1.07}
+.h1{font-size:clamp(48px,7vw,86px);max-width:950px;letter-spacing:-.035em}
+.h2{font-size:clamp(35px,4.8vw,58px);letter-spacing:-.025em}
+.h3{font-size:28px}
+.lede{font-size:18px;max-width:760px;color:var(--grey-mid)}
+.hero .lede,.section--dark .lede,.callout-dark .lede{color:#cbd8e3}
+.hero .lede{font-size:20px;margin:26px 0 0}
+.btn-row{display:flex;gap:13px;flex-wrap:wrap;margin-top:34px}
+.hero-proof{margin-top:62px;padding-top:24px;border-top:1px solid rgba(255,255,255,.15);display:grid;grid-template-columns:repeat(3,1fr);gap:22px;font-size:13px;color:#bdcad5}
+.hero-proof strong{color:#fff}
+.section-head{max-width:930px}
+.accent,.gold-text{color:var(--accent)}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:60px}
+.chain{display:grid;gap:12px}
+.chain-step{background:#fff;border:1px solid var(--line);padding:22px 24px;border-radius:10px;box-shadow:0 7px 25px rgba(7,26,43,.04)}
+.chain-step h4{margin:0 0 5px}.chain-step p{margin:0;color:var(--grey-mid)}
+.chain-arrow{text-align:center;color:var(--accent);font-size:20px}
+.stat-line{font-family:var(--font-display);font-size:30px;font-weight:700;margin:0}
+.callout-dark{background:linear-gradient(135deg,#071A2B,#0c2c49)}
+.callout-dark em{color:var(--accent);font-style:normal}
+.callout-list{list-style:none;padding:0;color:#c6d1dc;letter-spacing:.03em}
+.callout-tag{text-transform:uppercase;letter-spacing:.12em;font-size:12px;font-weight:800;color:var(--gold);margin-top:28px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.13);margin-top:48px;border:1px solid rgba(255,255,255,.12)}
+.steps--light{grid-template-columns:repeat(6,1fr);background:var(--line);border-color:var(--line)}
+.step{padding:27px;background:var(--navy-2);min-height:155px}
+.steps--light .step{background:#fff}
+.step .num,.index{display:block;color:var(--accent);font-weight:800;font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:15px}
+.step h4{margin:0 0 8px;font-size:16px}.step p{margin:0;color:#aebdca;font-size:13px}.steps--light .step p{color:var(--grey-mid)}
+.flow-strip,.pipeline{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.node,.pipeline-node,.tag{border:1px solid var(--line);background:#fff;border-radius:6px;padding:10px 13px;font-size:12px;font-weight:700}
+.section--dark .pipeline-node,.callout-dark .pipeline-node,.section--dark .tag,.callout-dark .tag{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.16);color:#fff}
+.arrow,.pipeline-arrow{color:var(--accent);font-weight:800}
+.node.is-accent{background:var(--accent);color:#fff;border-color:var(--accent)}
+.tech-rules{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:45px}
+.tech-rule{border:1px solid rgba(255,255,255,.13);padding:25px;border-radius:9px;background:rgba(255,255,255,.035)}
+.tech-rule span{display:block}.cond{font-family:var(--font-display);font-size:22px;font-weight:700}.when{color:#aebdca;font-size:13px;margin-top:8px}
+.tag-cloud{display:flex;gap:8px;flex-wrap:wrap;margin-top:34px}
+.service-family{border-top:1px solid var(--line);padding:42px 0}.service-family:last-child{border-bottom:1px solid var(--line)}
+.service-head{display:flex;justify-content:space-between;gap:30px;align-items:flex-start}
+.tagline{color:var(--grey-mid);max-width:330px}
+.service-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 30px;margin:28px 0 0;padding:0;list-style:none}
+.service-list li{padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
+.pipeline{margin:40px 0 30px}
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:38px}
+.kpi{border-top:2px solid var(--accent);padding:16px 5px;color:var(--grey-mid);font-size:12px}.kpi strong{display:block;color:inherit;font-size:14px;margin-bottom:4px}
+.section--dark .kpi{color:#b9c8d4}
+.pilot-card{margin-top:42px;border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:28px;display:flex;align-items:center;justify-content:space-between;gap:30px;background:rgba(255,255,255,.035)}
+.label{color:var(--accent);font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:11px}.lines{font-family:var(--font-display);font-size:25px;margin:5px 0 0}
+.dcm{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:45px}.dcm-step{background:#fff;border:1px solid var(--line);padding:28px;border-radius:10px}.dcm-step h4{font-size:18px}.dcm-flow{color:var(--grey-mid)}
+.case-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:45px}.case-grid.is-thirds{grid-template-columns:repeat(3,1fr)}
+.case-card{border:1px solid var(--line);border-radius:10px;padding:30px;background:#fff;box-shadow:0 8px 30px rgba(7,26,43,.04)}
+.case-card .tag{display:inline-block;color:var(--blue);background:var(--accent-soft);border:0}.place{text-transform:uppercase;letter-spacing:.1em;font-size:11px;font-weight:800;color:var(--grey);margin-top:22px}.case-card h3{font-family:var(--font-display);font-size:27px;line-height:1.15}.case-card p{color:var(--grey-mid)}.outcome{margin-top:22px;border-top:1px solid var(--line);padding-top:17px;font-size:13px;font-weight:700;color:var(--text)}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.12);margin-top:44px}.why-item{padding:27px;background:var(--navy-2)}.why-item p{color:#b9c8d4;font-size:13px}
+.model-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:42px}.model-col{background:#fff;border:1px solid var(--line);border-radius:10px;padding:30px}.model-col h4{font-family:var(--font-display);font-size:25px}.model-col li{margin:8px 0;color:var(--grey-mid)}
+.mini-cta{padding:34px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.mini-cta .wrap{display:flex;justify-content:space-between;align-items:center;gap:25px}.mini-cta p{font-family:var(--font-display);font-size:24px;margin:0}
+.cta-final{background:linear-gradient(145deg,#071A2B,#0B2742)}
+.cta-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;margin-top:50px;align-items:start}.promise{font-family:var(--font-display);font-size:30px;line-height:1.25}.note{color:#c0ccd6}.cta-contact{margin-top:42px;color:#b7c5d1;font-size:14px}.cta-contact strong{display:block;color:#fff;margin-bottom:7px}
+.form-card{background:#fff;color:var(--text);padding:32px;border-radius:12px;box-shadow:0 25px 70px rgba(0,0,0,.18)}.assurance{color:var(--grey-mid);font-size:13px}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{margin-top:15px}.field label{display:block;font-size:12px;font-weight:700;margin-bottom:6px}.field input,.field select,.field textarea{width:100%;border:1px solid #cdd6df;border-radius:6px;padding:12px 13px;font:inherit;background:#fff;color:var(--text);outline:none}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(45,140,255,.11)}
+.form-msg{display:none;margin-top:16px;color:#0c6a3c;font-size:13px}
+.site-footer{background:#04111d;color:#9fb0bd;padding:28px 0;font-size:12px}.site-footer .wrap{display:flex;justify-content:space-between;gap:20px}.foot-links{display:flex;gap:20px}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}.reveal.visible{opacity:1;transform:none}
+@media(max-width:980px){
+  .nav-links{display:none}.burger{display:block}.nav-cta .btn{display:none}
+  .hero{min-height:auto}.hero-proof,.grid-2,.cta-grid{grid-template-columns:1fr}
+  .steps--light{grid-template-columns:repeat(3,1fr)}
+  .tech-rules,.why-grid{grid-template-columns:repeat(2,1fr)}
+  .case-grid.is-thirds,.dcm{grid-template-columns:1fr}
+  .kpi-row{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:680px){
+  .wrap{width:min(100% - 28px,1180px)}.section{padding:68px 0}.hero{padding:90px 0 60px}
+  .h1{font-size:48px}.h2{font-size:38px}.hero .lede{font-size:17px}
+  .hero-proof,.steps,.steps--light,.tech-rules,.service-list,.case-grid,.why-grid,.model-grid,.field-row,.kpi-row{grid-template-columns:1fr}
+  .service-head,.pilot-card,.mini-cta .wrap,.site-footer .wrap{display:block}
+  .tagline{margin-top:8px}.mini-cta .btn{margin-top:14px}.foot-links{margin-top:12px}
+}
+</style>
+
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="siteNav">
+  <div class="wrap">
+    <a href="#top" class="logo">NAVITRENDS <span>UK</span></a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#solve">What We Solve</a>
+      <a href="#services">Services</a>
+      <a href="#how-we-work">How We Work</a>
+      <a href="#case-studies">Case Studies</a>
+      <a href="#why">Why Navitrends</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-primary">Book a Diagnostic</a>
+      <button class="burger" id="burgerBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#solve">What We Solve</a>
+  <a href="#services">Services</a>
+  <a href="#how-we-work">How We Work</a>
+  <a href="#case-studies">Case Studies</a>
+  <a href="#why">Why Navitrends</a>
+  <a href="#contact">Contact</a>
+  <a href="#contact" class="btn btn-primary">Book a Diagnostic</a>
+</div>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap hero-inner">
+    <p class="eyebrow">Navitrends UK &middot; Operational Systems &middot; Automation &middot; Data &middot; AI</p>
+    <h1 class="h1 reveal">Turn Operational Knowledge Into Working Systems.</h1>
+    <p class="lede reveal">We help SMEs and industrial organisations capture operational know-how, connect fragmented systems, automate repetitive work and apply AI where it creates measurable value.</p>
+    <div class="btn-row reveal">
+      <a href="#contact" class="btn btn-primary">Book a 30-Minute Diagnostic <span class="btn-arrow">&rarr;</span></a>
+      <a href="#how-we-work" class="btn btn-ghost-dark">Explore Our Approach</a>
+    </div>
+    <div class="hero-proof reveal">
+      <span><strong>UK presence</strong> &middot; commercial relationship &amp; accountability</span>
+      <span><strong>Tunisia engineering hub</strong> &middot; integrated delivery team</span>
+      <span><strong>24 years</strong> of professional experience rooted in industrial operations</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROBLEM ============ -->
+<section class="section section--cream" id="solve">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">What We Solve</p>
+      <h2 class="h2">Companies have more data than ever.<br>But do they own their <span class="accent">operational knowledge?</span></h2>
+    </div>
+
+    <div class="grid-2" style="margin-top:56px;align-items:start;">
+      <div class="chain reveal">
+        <div class="chain-step">
+          <h4>People</h4>
+          <p>The expert knows the exception.</p>
+        </div>
+        <div class="chain-arrow">&darr;</div>
+        <div class="chain-step">
+          <h4>Excel &middot; Email &middot; Documents</h4>
+          <p>The spreadsheet has the adjustment. The email has the decision.</p>
+        </div>
+        <div class="chain-arrow">&darr;</div>
+        <div class="chain-step">
+          <h4>ERP &middot; CRM &middot; Applications &middot; Machines</h4>
+          <p>The ERP stores the order.</p>
+        </div>
+      </div>
+      <div class="chain-note reveal">
+        <p class="stat-line">The data is stored.</p>
+        <p class="stat-line accent">The decision logic often isn&rsquo;t.</p>
+        <p class="lede" style="margin-top:26px;font-size:15px;">In most SMEs and industrial organisations, the knowledge that actually runs the business lives with a handful of people &mdash; not in the systems meant to capture it. The result:</p>
+        <ul style="margin-top:18px;font-size:14.5px;color:var(--grey-mid);line-height:2;">
+          <li>Repeated manual work and rebuilt reports</li>
+          <li>Delays, errors and expert dependency</li>
+          <li>Disconnected data across Excel-driven operations</li>
+          <li>Knowledge that disappears when experienced people leave</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WALKOUT CALLOUT ============ -->
+<section class="section callout-dark">
+  <div class="wrap">
+    <p class="eyebrow">Operational Risk</p>
+    <h2 class="h2 reveal">What happens when 25 years of experience<br><em>walks out the door?</em></h2>
+    <p class="callout-list reveal">Retirement &middot; Turnover &middot; Absence &middot; Growth &middot; Outsourcing</p>
+    <p class="callout-tag reveal">Operational resilience starts with knowledge.</p>
+  </div>
+</section>
+
+<!-- ============ APPROACH ============ -->
+<section class="section section--cream" id="how-we-work">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Our Approach</p>
+      <h2 class="h2">We turn operational knowledge into working systems.</h2>
+    </div>
+
+    <div class="steps steps--light reveal">
+      <div class="step"><span class="num">01</span><h4>Capture</h4><p>What people know.</p></div>
+      <div class="step"><span class="num">02</span><h4>Structure</h4><p>Processes &middot; rules &middot; exceptions.</p></div>
+      <div class="step"><span class="num">03</span><h4>Digitalise</h4><p>Systems &middot; data.</p></div>
+      <div class="step"><span class="num">04</span><h4>Automate</h4><p>Repetitive execution.</p></div>
+      <div class="step"><span class="num">05</span><h4>Augment</h4><p>AI &middot; decision support.</p></div>
+      <div class="step"><span class="num">06</span><h4>Measure</h4><p>Operational outcome.</p></div>
+    </div>
+
+    <div class="flow-strip reveal" style="margin-top:56px;justify-content:center;text-align:center;">
+      <span class="node">KNOWLEDGE</span><span class="arrow">&rarr;</span>
+      <span class="node">SYSTEM</span><span class="arrow">&rarr;</span>
+      <span class="node">INTELLIGENCE</span><span class="arrow">&rarr;</span>
+      <span class="node is-accent">VALUE</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TECHNOLOGY: PROBLEM FIRST ============ -->
+<section class="section section--dark">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Our Position</p>
+      <h2 class="h2">The problem chooses the technology.<br>Not the other way around.</h2>
+      <p class="lede" style="margin-top:22px;">We do not start with a platform. We start with a bottleneck &mdash; then apply the technology it actually requires.</p>
+    </div>
+
+    <div class="tech-rules reveal">
+      <div class="tech-rule"><span class="cond">ERP</span><span class="when">when ERP is needed</span></div>
+      <div class="tech-rule"><span class="cond">Automation</span><span class="when">when automation is enough</span></div>
+      <div class="tech-rule"><span class="cond">AI</span><span class="when">when AI creates value</span></div>
+      <div class="tech-rule"><span class="cond">Digital Twins</span><span class="when">when modelling improves decisions</span></div>
+    </div>
+
+    <div class="tag-cloud reveal">
+      <span class="tag">ERP</span><span class="tag">CRM</span><span class="tag">Custom Software</span>
+      <span class="tag">APIs</span><span class="tag">Automation</span><span class="tag">Data</span>
+      <span class="tag">AI</span><span class="tag">Decision Support</span><span class="tag">Odoo</span>
+      <span class="tag">ERPNext</span><span class="tag">Open Technologies</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="section section--white" id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Services</p>
+      <h2 class="h2">Three ways we create operational value.</h2>
+    </div>
+
+    <div class="service-family reveal">
+      <div class="service-head">
+        <div>
+          <span class="index">01</span>
+          <h3 class="h3">Operational Systems</h3>
+        </div>
+        <p class="tagline">Structure and connect the operation.</p>
+      </div>
+      <ul class="service-list">
+        <li>ERP Process Reset</li><li>ERP Implementation</li>
+        <li>Odoo</li><li>ERPNext</li>
+        <li>CRM</li><li>API Integration</li>
+        <li>Custom Business Applications</li><li>Operational BI</li>
+        <li>Workflow Digitalisation</li><li>Zero-Paper Processes</li>
+        <li>ISO-Oriented Digitalisation</li>
+      </ul>
+    </div>
+
+    <div class="service-family reveal">
+      <div class="service-head">
+        <div>
+          <span class="index">02</span>
+          <h3 class="h3">Intelligent Workflows</h3>
+        </div>
+        <p class="tagline">Remove repetitive work.</p>
+      </div>
+      <ul class="service-list">
+        <li>Document-to-ERP Automation</li><li>AI Document Processing</li>
+        <li>Quotation Automation</li><li>CRM Automation</li>
+        <li>Sales Automation</li><li>AI Workflow Agents</li>
+        <li>Data Extraction</li><li>Automatic Classification</li>
+        <li>Routing &amp; Approval Automation</li><li>AI-Assisted Business Workflows</li>
+      </ul>
+    </div>
+
+    <div class="service-family reveal">
+      <div class="service-head">
+        <div>
+          <span class="index">03</span>
+          <h3 class="h3">Operational Knowledge &amp; Intelligence</h3>
+        </div>
+        <p class="tagline">Turn experience into a reusable operational asset.</p>
+      </div>
+      <ul class="service-list">
+        <li>Knowledge Capture</li><li>AI Knowledge Assistant</li>
+        <li>Business Data Intelligence</li><li>Sales Intelligence</li>
+        <li>Historical Data Reuse</li><li>Decision Support</li>
+        <li>Industrial Data</li><li>Digital Twins</li>
+        <li>Process Modelling</li><li>Predictive Analytics</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SALES AUTOMATION / REVENUE INTELLIGENCE ============ -->
+<section class="section section--cream">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Revenue Intelligence</p>
+      <h2 class="h2">Build a sales engine that learns.</h2>
+      <p class="lede" style="margin-top:22px;">An engineering and automation capability, not an off-the-shelf platform &mdash; built around your data, your CRM and your sales process.</p>
+    </div>
+
+    <div class="pipeline reveal">
+      <div class="pipeline-node">Prospect Data</div><div class="pipeline-arrow">&rarr;</div>
+      <div class="pipeline-node">Enrichment</div><div class="pipeline-arrow">&rarr;</div>
+      <div class="pipeline-node">Segmentation</div><div class="pipeline-arrow">&rarr;</div>
+      <div class="pipeline-node">AI Personalisation</div><div class="pipeline-arrow">&rarr;</div>
+      <div class="pipeline-node">Email / Calls</div><div class="pipeline-arrow">&rarr;</div>
+      <div class="pipeline-node">CRM</div><div class="pipeline-arrow">&rarr;</div>
+      <div class="pipeline-node">Conversion</div><div class="pipeline-arrow">&rarr;</div>
+      <div class="pipeline-node">Analysis</div>
+    </div>
+
+    <ul class="service-list reveal" style="margin-top:12px;">
+      <li>Company Data Enrichment</li><li>CRM Structuring</li>
+      <li>Segmentation &amp; Lead Scoring</li><li>Personalised AI Messaging</li>
+      <li>Email Automation</li><li>Call Workflow Integration</li>
+      <li>Conversion Tracking</li><li>Pipeline Dashboards &amp; Sales Analytics</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ DOCUMENT AUTOMATION ============ -->
+<section class="section section--dark">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Use Case &middot; Document Automation</p>
+      <h2 class="h2">Document &rarr; Data &rarr; ERP &rarr; Action</h2>
+    </div>
+
+    <div class="tag-cloud reveal">
+      <span class="tag">Invoice</span><span class="tag">Purchase Order</span>
+      <span class="tag">Audit Report</span><span class="tag">Certificate</span>
+      <span class="tag">Quality Document</span><span class="tag">Customer File</span>
+    </div>
+
+    <div class="pipeline reveal" style="margin-top:36px;">
+      <div class="pipeline-node">Capture</div><div class="pipeline-arrow">&rarr;</div>
+      <div class="pipeline-node">Understand &amp; Validate</div><div class="pipeline-arrow">&rarr;</div>
+      <div class="pipeline-node">Classify</div><div class="pipeline-arrow">&rarr;</div>
+      <div class="pipeline-node">ERP / Workflow</div><div class="pipeline-arrow">&rarr;</div>
+      <div class="pipeline-node">Archive &amp; Trigger Action</div>
+    </div>
+
+    <div class="kpi-row reveal">
+      <span class="kpi"><strong>Less manual handling</strong>fewer repetitive touchpoints</span>
+      <span class="kpi"><strong>Fewer errors</strong>consistent, validated data</span>
+      <span class="kpi"><strong>Faster processing</strong>reduced turnaround time</span>
+      <span class="kpi"><strong>Traceability</strong>structured, auditable data</span>
+    </div>
+
+    <div class="pilot-card reveal">
+      <div>
+        <p class="label">Typical First Pilot</p>
+        <p class="lines">One document type.<br>One workflow.<br>One KPI.</p>
+      </div>
+      <a href="#contact" class="btn btn-primary">Discuss an Automation Pilot</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUOTATION INTELLIGENCE ============ -->
+<section class="section section--white">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Use Case &middot; Quotation Intelligence</p>
+      <h2 class="h2">Years of quotations. One intelligent system.</h2>
+    </div>
+
+    <div class="pipeline reveal">
+      <div class="pipeline-node">Historical Data</div><div class="pipeline-arrow">&rarr;</div>
+      <div class="pipeline-node">Knowledge Extraction</div><div class="pipeline-arrow">&rarr;</div>
+      <div class="pipeline-node">Similar Case Retrieval</div><div class="pipeline-arrow">&rarr;</div>
+      <div class="pipeline-node">AI-Assisted Proposal</div><div class="pipeline-arrow">&rarr;</div>
+      <div class="pipeline-node">Human Validation</div><div class="pipeline-arrow">&rarr;</div>
+      <div class="pipeline-node">Quotation</div>
+    </div>
+
+    <div class="grid-2 reveal" style="margin-top:12px;">
+      <div>
+        <h4 class="h3" style="font-size:16px;margin-bottom:14px;">Inputs</h4>
+        <ul class="service-list" style="grid-template-columns:1fr;">
+          <li>Historical Quotations</li><li>Customer Requirements</li>
+          <li>Pricing Rules</li><li>Expert Know-How</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="h3" style="font-size:16px;margin-bottom:14px;">Business Value</h4>
+        <ul class="service-list" style="grid-template-columns:1fr;">
+          <li>Faster response time</li><li>Reuse of company knowledge</li>
+          <li>Improved consistency</li><li>Reduced repetitive expert work</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="kpi-row reveal">
+      <span class="kpi"><strong>Measured through</strong>quotation preparation time</span>
+      <span class="kpi"><strong>Measured through</strong>historical knowledge reuse</span>
+      <span class="kpi"><strong>Measured through</strong>human validation rate</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KNOWLEDGE ASSISTANT ============ -->
+<section class="section callout-dark">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Use Case &middot; Knowledge Assistant</p>
+      <h2 class="h2">Turn experience into an operational asset.</h2>
+    </div>
+
+    <div class="pipeline reveal">
+      <div class="pipeline-node">Expert Knowledge<br>Procedures &middot; Cases &middot; ERP/CRM &middot; Documents</div>
+      <div class="pipeline-arrow">&rarr;</div>
+      <div class="pipeline-node">Structured Operational Knowledge</div>
+      <div class="pipeline-arrow">&rarr;</div>
+      <div class="pipeline-node">Trusted AI Assistant</div>
+    </div>
+
+    <ul class="callout-list reveal" style="display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:28px;">
+      <li>Answer with source</li>
+      <li>&middot;</li><li>Linked procedure</li>
+      <li>&middot;</li><li>Recommended action</li>
+      <li>&middot;</li><li>Human approval</li>
+    </ul>
+
+    <p class="callout-tag reveal" style="max-width:520px;text-transform:none;letter-spacing:0;font-family:var(--font-display);font-size:18px;font-weight:600;color:var(--text-inverse);">
+      AI does not replace operational knowledge. <span class="gold-text">It makes structured knowledge usable at scale.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============ DIGITISE / CONNECT / MODEL ============ -->
+<section class="section section--cream">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Digitalisation &amp; Digital Twin</p>
+      <h2 class="h2">Digitise. Connect. Model.</h2>
+    </div>
+
+    <div class="dcm reveal">
+      <div class="dcm-step">
+        <span class="tag">Digitise</span>
+        <h4>Paper &middot; Excel &middot; Email</h4>
+        <div class="dcm-flow">&rarr; Digital workflows<br><strong>&rarr; Controlled documents &amp; traceability</strong></div>
+      </div>
+      <div class="dcm-step">
+        <span class="tag">Connect</span>
+        <h4>ERP &middot; CRM &middot; Machines &middot; Applications</h4>
+        <div class="dcm-flow">&rarr; Connected systems &amp; data flows<br><strong>&rarr; Integrated operational data</strong></div>
+      </div>
+      <div class="dcm-step">
+        <span class="tag">Model</span>
+        <h4>Physical Process</h4>
+        <div class="dcm-flow">&rarr; Simulation &middot; Digital Twin<br><strong>&rarr; Decision support</strong></div>
+      </div>
+    </div>
+
+    <p class="lede reveal" style="margin-top:36px;">Start with the problem. Add complexity only when it creates value.</p>
+  </div>
+</section>
+
+<!-- ============ METHODOLOGY ============ -->
+<section class="section section--dark">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">How We Engage</p>
+      <h2 class="h2">Start small. Prove value.<br>Scale what works.</h2>
+    </div>
+
+    <div class="steps reveal">
+      <div class="step">
+        <span class="num">01 &mdash; Discover</span>
+        <h4>One process. One bottleneck. One measurable opportunity.</h4>
+        <p style="margin-top:14px;color:var(--gold);font-size:13px;letter-spacing:.03em;">Deliverable: Opportunity Brief</p>
+      </div>
+      <div class="step">
+        <span class="num">02 &mdash; Prove</span>
+        <h4>One use case. One pilot. One measurable objective.</h4>
+        <p style="margin-top:14px;color:var(--gold);font-size:13px;letter-spacing:.03em;">Deliverable: Working pilot + measured result</p>
+      </div>
+      <div class="step">
+        <span class="num">03 &mdash; Scale</span>
+        <h4>ERP &middot; Automation &middot; AI &middot; Custom Engineering &middot; Support</h4>
+        <p style="margin-top:14px;color:var(--gold);font-size:13px;letter-spacing:.03em;">Deliverable: Production roadmap + support plan</p>
+      </div>
+    </div>
+
+    <p class="callout-tag reveal center" style="text-align:left;margin-top:40px;">No large transformation programme before proving the business case.</p>
+  </div>
+</section>
+
+<!-- ============ CASE STUDIES ============ -->
+<section class="section section--white" id="case-studies">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Case Studies</p>
+      <h2 class="h2">Evidence, not promises.</h2>
+    </div>
+
+    <div class="case-grid reveal">
+      <div class="case-card">
+        <p class="tag">Audit Workflow Agent</p>
+        <p class="place">Alexann &middot; France</p>
+        <h3>From manual audit reports to automated digital execution.</h3>
+        <p><strong>Challenge:</strong> audit reports required classification and distribution between audit organisations / laboratories and their clients.</p>
+        <p><strong>Solution:</strong> automated classification, automated routing and report distribution connecting organisations and clients.</p>
+        <div class="outcome">Measured through: processing time &middot; automated classification rate &middot; routing time &middot; manual interventions.</div>
+      </div>
+
+      <div class="case-card">
+        <p class="tag">Quotation Intelligence</p>
+        <p class="place">GS Geo &middot; Saudi Arabia</p>
+        <h3>Six years of quotations become reusable knowledge.</h3>
+        <p><strong>Challenge:</strong> preparing quotations required searching and reusing historical commercial knowledge.</p>
+        <p><strong>Solution:</strong> knowledge extraction, similar quotation retrieval, AI-assisted generation and human validation.</p>
+        <div class="outcome">Faster quotation preparation while preserving company know-how.</div>
+      </div>
+    </div>
+
+    <div class="case-grid is-thirds reveal" style="margin-top:24px;">
+      <div class="case-card is-compact">
+        <p class="tag">Zero-Paper &middot; ISO 9001</p>
+        <p class="place">M-Pack</p>
+        <p>Operational workflows digitalised around ISO 9001 requirements.</p>
+      </div>
+      <div class="case-card is-compact">
+        <p class="tag">Metrology Laboratory</p>
+        <p class="place">IMC</p>
+        <p>Zero-paper digitalisation structured around ISO-driven metrology requirements.</p>
+      </div>
+      <div class="case-card is-compact">
+        <p class="tag">Digital Twin &middot; In Development</p>
+        <p class="place">Extrusion Process</p>
+        <p>Process model linked to operational data, designed to support simulation and decision support.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY NAVITRENDS ============ -->
+<section class="section section--dark" id="why">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Why Navitrends</p>
+      <h2 class="h2">Why Navitrends?</h2>
+    </div>
+
+    <div class="why-grid reveal">
+      <div class="why-item">
+        <h4>Industrial Understanding</h4>
+        <p>24 years of professional experience rooted in industrial operations.</p>
+      </div>
+      <div class="why-item">
+        <h4>System Engineering</h4>
+        <p>ERP &middot; Custom Software &middot; Integration &middot; Automation.</p>
+      </div>
+      <div class="why-item">
+        <h4>Applied Intelligence</h4>
+        <p>Knowledge &middot; Data &middot; AI &middot; Decision Support.</p>
+      </div>
+      <div class="why-item">
+        <h4>Accountable Delivery</h4>
+        <p>UK presence + integrated Tunisia engineering hub.</p>
+      </div>
+    </div>
+
+    <p class="callout-tag reveal" style="margin-top:36px;">One team from operational diagnosis to production support.</p>
+  </div>
+</section>
+
+<!-- ============ UK + NEARSHORE ============ -->
+<section class="section section--cream">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Delivery Model</p>
+      <h2 class="h2">UK accountability. Nearshore engineering capacity.</h2>
+      <p class="lede" style="margin-top:22px;">One integrated delivery team &mdash; not an offshore hand-off.</p>
+    </div>
+
+    <div class="model-grid reveal">
+      <div class="model-col">
+        <h4>United Kingdom</h4>
+        <ul>
+          <li>Commercial relationship</li>
+          <li>Project accountability</li>
+          <li>Client understanding</li>
+          <li>Governance</li>
+        </ul>
+      </div>
+      <div class="model-col">
+        <h4>Tunisia Engineering Hub</h4>
+        <ul>
+          <li>ERP engineering</li>
+          <li>Software development</li>
+          <li>Automation</li>
+          <li>Data / AI</li>
+          <li>DevOps &amp; integration</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MINI CTA ============ -->
+<section class="mini-cta section--white">
+  <div class="wrap">
+    <p>Ready to find one problem worth solving?</p>
+    <a href="#contact" class="btn btn-ghost-light">Talk to Navitrends UK <span class="btn-arrow">&rarr;</span></a>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA + FORM ============ -->
+<section class="section cta-final" id="contact">
+  <div class="wrap">
+    <p class="eyebrow">Get Started</p>
+    <h2 class="h2 reveal">Let&rsquo;s find one problem worth solving.</h2>
+
+    <div class="cta-grid">
+      <div class="cta-copy reveal">
+        <h3 class="h3" style="margin-top:8px;">30-Minute Operational Digitalisation Diagnostic</h3>
+        <p class="promise">One process.<br>One bottleneck.<br>One KPI.<br>One measurable opportunity.</p>
+        <p class="note">No technology pitch before we understand the problem.</p>
+
+        <div class="cta-contact">
+          <strong>Navitrends Ltd</strong>
+          5 Brayford Square<br>
+          London<br>
+          United Kingdom E1 0SG
+        </div>
+      </div>
+
+      <form class="form-card reveal" id="diagnosticForm" novalidate>
+        <h3 class="h3">Book a 30-Minute Diagnostic</h3>
+        <p class="assurance">We will review your request before the call so the discussion can focus on your operational problem.</p>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="fName">Name</label>
+            <input type="text" id="fName" name="name" required autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="fCompany">Company</label>
+            <input type="text" id="fCompany" name="company" required autocomplete="organization">
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="fEmail">Work Email</label>
+            <input type="email" id="fEmail" name="email" required autocomplete="email">
+          </div>
+          <div class="field">
+            <label for="fPhone">Phone (optional)</label>
+            <input type="tel" id="fPhone" name="phone" autocomplete="tel">
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="fRole">Role</label>
+            <input type="text" id="fRole" name="role" placeholder="e.g. Operations Director">
+          </div>
+          <div class="field">
+            <label for="fSize">Company Size</label>
+            <select id="fSize" name="companySize">
+              <option value="">Select&hellip;</option>
+              <option>1&ndash;10</option>
+              <option>11&ndash;50</option>
+              <option>51&ndash;200</option>
+              <option>201&ndash;500</option>
+              <option>500+</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="fProblem">What operational problem would you like to solve?</label>
+          <textarea id="fProblem" name="problem" rows="3"></textarea>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="fSystems">Current Systems / ERP</label>
+            <input type="text" id="fSystems" name="systems" placeholder="e.g. Sage, SAP, spreadsheets">
+          </div>
+          <div class="field">
+            <label for="fContact">Preferred Contact Method</label>
+            <select id="fContact" name="preferredContact">
+              <option value="">Select&hellip;</option>
+              <option>Email</option>
+              <option>Phone</option>
+              <option>Either</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:10px;">Request My Diagnostic</button>
+        <p class="form-msg" id="formMsg">Thank you &mdash; your request has been received. We will be in touch shortly to confirm your diagnostic call.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="foot-left">&copy; <span id="year"></span> Navitrends Ltd &middot; 5 Brayford Square, London, United Kingdom E1 0SG</p>
+    <div class="foot-links">
+      <a href="#services">Services</a>
+      <a href="#case-studies">Case Studies</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const burgerBtn = document.getElementById('burgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  if (burgerBtn && mobileMenu) {
+    burgerBtn.addEventListener('click', () => {
+      const active = mobileMenu.classList.toggle('active');
+      burgerBtn.setAttribute('aria-expanded', String(active));
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        burgerBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+  } else {
+    reveals.forEach(el => el.classList.add('visible'));
+  }
+
+  const year = document.getElementById('year');
+  if (year) year.textContent = new Date().getFullYear();
+
+  const contactForm = document.getElementById('diagnosticForm');
+  const formMsg = document.getElementById('formMsg');
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('fName')?.value.trim() || '';
+      const company = document.getElementById('fCompany')?.value.trim() || '';
+      const email = document.getElementById('fEmail')?.value.trim() || '';
+
+      if (!name || !company || !email) {
+        if (formMsg) {
+          formMsg.style.display = 'block';
+          formMsg.style.color = '#B42318';
+          formMsg.textContent = 'Please complete your name, company and work email.';
+        }
+        return;
+      }
+
+      const formData = {
+        fullName: name,
+        company,
+        workEmail: email,
+        phone: document.getElementById('fPhone')?.value || '',
+        role: document.getElementById('fRole')?.value || '',
+        companySize: document.getElementById('fSize')?.value || '',
+        problem: document.getElementById('fProblem')?.value || '',
+        systems: document.getElementById('fSystems')?.value || '',
+        preferredContact: document.getElementById('fContact')?.value || '',
+        timestamp: new Date().toISOString()
+      };
+
+      // Local test only. Replace this console.log with a Brevo/CRM webhook or API call.
+      console.log('Diagnostic Request Payload:', formData);
+
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting Request...';
+
+      setTimeout(() => {
+        if (formMsg) {
+          formMsg.style.display = 'block';
+          formMsg.style.color = '#0C6A3C';
+          formMsg.textContent = `Thank you, ${name}. Your diagnostic request has been captured locally. Connect the form to your CRM/Brevo webhook before production.`;
+        }
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Request My Diagnostic';
+      }, 700);
+    });
+  }
+});
+</script>
+
+</body>
+</html>
