@@ -3,10 +3,10 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import en, { type Messages } from "./en";
 import fr from "./fr";
+import GoogleTranslate, { isGoogleLocale, writeGoogTrans } from "./GoogleTranslate";
 
-export type Locale = "en" | "fr";
+export type Locale = "en" | "fr" | "de" | "es";
 
-const dictionaries: Record<Locale, Messages> = { en, fr };
 const STORAGE_KEY = "navitrends-lang";
 
 const LanguageContext = createContext<{
@@ -19,29 +19,54 @@ const LanguageContext = createContext<{
   setLocale: () => {},
 });
 
+function isLocale(value: string | null): value is Locale {
+  return value === "en" || value === "fr" || value === "de" || value === "es";
+}
+
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>("en");
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
     const saved = window.localStorage.getItem(STORAGE_KEY);
-    if (saved === "en" || saved === "fr") setLocaleState(saved);
+    if (isLocale(saved)) setLocaleState(saved);
+    setReady(true);
   }, []);
 
   useEffect(() => {
+    if (!ready) return;
     window.localStorage.setItem(STORAGE_KEY, locale);
-    document.documentElement.lang = locale === "fr" ? "fr" : "en";
-  }, [locale]);
+    document.documentElement.lang = locale;
+    if (isGoogleLocale(locale)) writeGoogTrans(`/en/${locale}`);
+  }, [locale, ready]);
+
+  const setLocale = (next: Locale) => {
+    const needsReload = isGoogleLocale(locale) || isGoogleLocale(next);
+    window.localStorage.setItem(STORAGE_KEY, next);
+    if (isGoogleLocale(next)) writeGoogTrans(`/en/${next}`);
+    else writeGoogTrans(null);
+    if (needsReload) {
+      window.location.reload();
+      return;
+    }
+    setLocaleState(next);
+  };
 
   const value = useMemo(
     () => ({
       locale,
-      t: dictionaries[locale],
-      setLocale: (next: Locale) => setLocaleState(next),
+      t: locale === "fr" ? fr : en,
+      setLocale,
     }),
     [locale]
   );
 
-  return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
+  return (
+    <LanguageContext.Provider value={value}>
+      <GoogleTranslate locale={locale} />
+      {children}
+    </LanguageContext.Provider>
+  );
 }
 
 export function useT() {

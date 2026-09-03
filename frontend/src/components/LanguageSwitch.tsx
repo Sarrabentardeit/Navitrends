@@ -9,6 +9,8 @@ import { cn } from "@/lib/utils";
 const options: { id: Locale; label: string }[] = [
   { id: "en", label: "English" },
   { id: "fr", label: "Français" },
+  { id: "de", label: "Deutsch" },
+  { id: "es", label: "Español" },
 ];
 
 export default function LanguageSwitch({ compact = false }: { compact?: boolean }) {
@@ -26,7 +28,7 @@ export default function LanguageSwitch({ compact = false }: { compact?: boolean 
   }, []);
 
   return (
-    <div className="relative" ref={ref}>
+    <div className="relative notranslate" ref={ref} translate="no">
       <button
         type="button"
         className={cn(
@@ -35,7 +37,7 @@ export default function LanguageSwitch({ compact = false }: { compact?: boolean 
         )}
         aria-haspopup="listbox"
         aria-expanded={open}
-        aria-label={locale === "fr" ? "Langue" : "Language"}
+        aria-label="Language"
         onClick={() => setOpen((v) => !v)}
       >
         <Globe size={14} strokeWidth={1.75} />
