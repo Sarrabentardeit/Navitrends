@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import WordCycle from "@/components/WordCycle";
 import SystemsCanvas from "@/components/SystemsCanvas";
+import { useT } from "@/i18n/LanguageProvider";
 
 const fade = {
   hidden: { opacity: 0, y: 18 },
@@ -10,6 +11,8 @@ const fade = {
 };
 
 export default function HeroSection() {
+  const t = useT();
+
   return (
     <section className="bg-[#fbfbfd]">
       <div className="grid lg:grid-cols-2 lg:min-h-[calc(100vh-4.4rem)]">
@@ -25,26 +28,25 @@ export default function HeroSection() {
             }}
           >
             <motion.p variants={fade} className="kicker mb-5">
-              Systems engineering · London
+              {t.hero.kicker}
             </motion.p>
             <motion.h1
               variants={fade}
               className="serif text-[2.7rem] sm:text-[3.6rem] xl:text-[4.4rem] leading-[1.04] tracking-tight text-[#0a1638]"
             >
-              We engineer
-              <WordCycle />
-              that scale.
+              {t.hero.lead}
+              <WordCycle words={t.hero.words} />
+              {t.hero.trail}
             </motion.h1>
             <motion.p variants={fade} className="mt-7 max-w-md text-[#4b5573] leading-relaxed">
-              We map how the operation actually runs. Then we put ERP,
-              automation and reporting underneath it — one team, one architecture.
+              {t.hero.body}
             </motion.p>
             <motion.div variants={fade} className="mt-8 flex flex-wrap gap-3">
               <a href="#contact" className="btn btn-red">
-                Talk to us <span className="btn-chevron" aria-hidden>→</span>
+                {t.hero.talk} <span className="btn-chevron" aria-hidden>→</span>
               </a>
               <a href="#case-studies" className="btn btn-line">
-                See the work <span className="btn-chevron" aria-hidden>→</span>
+                {t.hero.work} <span className="btn-chevron" aria-hidden>→</span>
               </a>
             </motion.div>
           </motion.div>

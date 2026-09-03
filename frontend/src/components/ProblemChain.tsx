@@ -1,14 +1,10 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-
-const chain = [
-  { title: "People", text: "The expert knows the exception." },
-  { title: "Excel · Email · Documents", text: "The spreadsheet has the adjustment. The email has the decision." },
-  { title: "ERP · CRM · Applications · Machines", text: "The ERP stores the order." },
-];
+import { useT } from "@/i18n/LanguageProvider";
 
 export default function ProblemChain() {
+  const t = useT();
   const reduce = useReducedMotion();
 
   return (
@@ -23,7 +19,7 @@ export default function ProblemChain() {
         />
       )}
       <div className="space-y-3">
-        {chain.map((item) => (
+        {t.chain.map((item) => (
           <div key={item.title} className="border border-[#e6e9f2] bg-white p-6">
             <h3 className="serif text-xl text-[#0a1638]">{item.title}</h3>
             <p className="mt-2 text-sm text-[#5b6178]">{item.text}</p>

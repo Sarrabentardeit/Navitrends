@@ -94,7 +94,7 @@ export async function POST(request: Request) {
       html: `
         <div style="font-family:Arial,sans-serif;max-width:640px;margin:0 auto;padding:24px;background:#fbfbfd">
           <p style="margin:0 0 8px;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:#e31c23">Navitrends</p>
-          <h1 style="margin:0 0 20px;font-size:22px;color:#0a1638">New 30-minute diagnostic request</h1>
+          <h1 style="margin:0 0 20px;font-size:22px;color:#0a1638">New 30-Minute Diagnostic Request</h1>
           <table style="width:100%;border-collapse:collapse;background:#fff;padding:8px 20px;border:1px solid #e6e9f2">
             ${row("Name", name)}
             ${row("Company", company)}

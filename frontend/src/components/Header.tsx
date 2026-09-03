@@ -1,23 +1,25 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Logo from "@/components/Logo";
-
-const links = [
-  { label: "What We Solve", href: "#solve" },
-  { label: "Services", href: "#services" },
-  { label: "How We Work", href: "#how-we-work" },
-  { label: "Case Studies", href: "#case-studies" },
-  { label: "Why Navitrends", href: "#why" },
-  { label: "Contact", href: "#contact" },
-];
+import LanguageSwitch from "@/components/LanguageSwitch";
+import { useT } from "@/i18n/LanguageProvider";
 
 export default function Header() {
+  const t = useT();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+
+  const links = [
+    { label: t.nav.solve, href: "#solve" },
+    { label: t.nav.services, href: "#services" },
+    { label: t.nav.work, href: "#how-we-work" },
+    { label: t.nav.cases, href: "#case-studies" },
+    { label: t.nav.why, href: "#why" },
+    { label: t.nav.contact, href: "#contact" },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 6);
@@ -54,14 +56,18 @@ export default function Header() {
           <a href="tel:+442039962137" className="text-[12px] text-[#4b5573] hover:text-[#0a1638]">
             +44 20 3996 2137
           </a>
+          <LanguageSwitch />
           <a href="#contact" className="btn btn-red h-10 px-5">
-            Book a Diagnostic
+            {t.nav.book}
           </a>
         </div>
 
-        <button className="lg:hidden p-2" onClick={() => setOpen((v) => !v)} aria-label="Menu">
-          {open ? <X size={20} /> : <Menu size={20} />}
-        </button>
+        <div className="flex items-center gap-2 lg:hidden">
+          <LanguageSwitch />
+          <button className="p-2" onClick={() => setOpen((v) => !v)} aria-label={t.nav.menu}>
+            {open ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
       </div>
 
       {open && (
@@ -74,7 +80,7 @@ export default function Header() {
             ))}
           </div>
           <a href="#contact" className="btn btn-red" onClick={() => setOpen(false)}>
-            Book a Diagnostic
+            {t.nav.book}
           </a>
         </div>
       )}
