@@ -219,7 +219,7 @@ const fr: Messages = {
   footer: {
     places: [
       { region: "Royaume-Uni", detail: "5 Brayford Square, London E1 0SG" },
-      { region: "Europe", detail: "Royaume-Uni · France" },
+      { region: "Europe", detail: "Royaume-Uni" },
       { region: "Afrique du Nord", detail: "Hub d’ingénierie en Tunisie" },
     ],
     services: "Services",

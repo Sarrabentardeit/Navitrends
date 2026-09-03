@@ -217,7 +217,7 @@ const en = {
   footer: {
     places: [
       { region: "United Kingdom", detail: "5 Brayford Square, London E1 0SG" },
-      { region: "Europe", detail: "United Kingdom · France" },
+      { region: "Europe", detail: "United Kingdom" },
       { region: "North Africa", detail: "Tunisia engineering hub" },
     ],
     services: "Services",

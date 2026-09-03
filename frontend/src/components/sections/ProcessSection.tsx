@@ -18,8 +18,7 @@ export default function ProcessSection() {
         <div className="relative mb-12">
           <motion.div
             aria-hidden
-            className="pointer-events-none absolute top-8 right-8 left-8 hidden h-px bg-[#71cbcc]/70 md:block"
-            style={{ originX: 0 }}
+            className="pointer-events-none absolute inset-x-0 top-[3.15rem] z-[1] hidden h-px origin-left bg-[#71cbcc]/70 md:block"
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: false, margin: "-80px" }}
