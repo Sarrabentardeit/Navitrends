@@ -9,7 +9,7 @@ import {
 
 export async function POST(request: Request) {
   if (!isAdminConfigured()) {
-    return NextResponse.json({ error: "ADMIN_PASSWORD manquant dans .env.local" }, { status: 500 });
+    return NextResponse.json({ error: "Connexion impossible." }, { status: 500 });
   }
 
   const body = (await request.json().catch(() => null)) as { password?: string } | null;

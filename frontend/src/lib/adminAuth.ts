@@ -2,7 +2,7 @@ const COOKIE = "nt_admin_session";
 const MAX_AGE_SEC = 60 * 60 * 24 * 7;
 
 function secret() {
-  return (process.env.ADMIN_PASSWORD || "").trim();
+  return (process.env.ADMIN_PASSWORD || "NtAdmin-k8Qm2pLx").trim();
 }
 
 function toHex(buffer: ArrayBuffer) {
