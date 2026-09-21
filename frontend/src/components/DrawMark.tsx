@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 export default function DrawMark({ children }: { children: React.ReactNode }) {
   return (
     <motion.em
-      className="relative not-italic text-[#e31c23] inline-block"
+      className="relative not-italic text-[var(--nt-red)] inline-block"
       initial="rest"
       whileInView="show"
       viewport={{ once: false, margin: "-40px" }}
@@ -13,7 +13,7 @@ export default function DrawMark({ children }: { children: React.ReactNode }) {
       {children}
       <motion.span
         aria-hidden
-        className="absolute left-0 right-0 -bottom-1 h-px bg-[#e31c23]"
+        className="absolute left-0 right-0 -bottom-1 h-px bg-[var(--nt-red)]"
         variants={{
           rest: { scaleX: 0 },
           show: { scaleX: 1 },

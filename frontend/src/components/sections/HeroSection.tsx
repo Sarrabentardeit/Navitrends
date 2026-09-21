@@ -14,7 +14,7 @@ export default function HeroSection() {
   const t = useT();
 
   return (
-    <section className="bg-[#fbfbfd]">
+    <section className="bg-[var(--background)]">
       <div className="grid lg:grid-cols-2 lg:min-h-[calc(100vh-4.4rem)]">
         <div className="flex items-center">
           <motion.div
@@ -32,13 +32,13 @@ export default function HeroSection() {
             </motion.p>
             <motion.h1
               variants={fade}
-              className="serif text-[2.7rem] sm:text-[3.6rem] xl:text-[4.4rem] leading-[1.04] tracking-tight text-[#0a1638]"
+              className="serif text-[2.7rem] sm:text-[3.6rem] xl:text-[4.4rem] leading-[1.04] tracking-tight text-[var(--nt-navy)]"
             >
               {t.hero.lead}
               <WordCycle words={t.hero.words} />
               {t.hero.trail}
             </motion.h1>
-            <motion.p variants={fade} className="mt-7 max-w-md text-[#4b5573] leading-relaxed">
+            <motion.p variants={fade} className="mt-7 max-w-md text-[var(--nt-muted)] leading-relaxed">
               {t.hero.body}
             </motion.p>
             <motion.div variants={fade} className="mt-8 flex flex-wrap gap-3">

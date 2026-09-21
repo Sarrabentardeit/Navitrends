@@ -14,7 +14,7 @@ export default function CaseStudiesSection() {
         <div className="grid lg:grid-cols-2 gap-6">
           {t.cases.featured.map((item) => (
             <article key={item.place} className="border border-[#e6e9f2] bg-[#fbfbfd] p-8 h-full">
-              <p className="inline-block bg-[#e31c23]/8 text-[#e31c23] text-[11px] tracking-wide font-semibold px-2.5 py-1">
+              <p className="inline-block bg-[var(--nt-red)]/8 text-[var(--nt-red)] text-[11px] tracking-wide font-semibold px-2.5 py-1">
                 {item.tag}
               </p>
               <p className="mt-5 text-[11px] tracking-[0.18em] uppercase text-[#8b91a5]">{item.place}</p>
@@ -35,7 +35,7 @@ export default function CaseStudiesSection() {
         <div className="grid md:grid-cols-3 gap-6 mt-6">
           {t.cases.compact.map((item) => (
             <article key={item.place} className="border border-[#e6e9f2] p-7 h-full">
-              <p className="inline-block bg-[#e31c23]/8 text-[#e31c23] text-[11px] tracking-wide font-semibold px-2.5 py-1">
+              <p className="inline-block bg-[var(--nt-red)]/8 text-[var(--nt-red)] text-[11px] tracking-wide font-semibold px-2.5 py-1">
                 {item.tag}
               </p>
               <p className="mt-5 text-[11px] tracking-[0.18em] uppercase text-[#8b91a5]">{item.place}</p>

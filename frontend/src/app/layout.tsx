@@ -22,6 +22,9 @@ export const metadata: Metadata = {
   description:
     "Navitrends UK helps SMEs and industrial organisations digitise operations, connect systems, automate workflows and apply AI to measurable business problems.",
   metadataBase: new URL("https://navitrends.uk"),
+  verification: {
+    google: process.env.NEXT_PUBLIC_GSC_VERIFICATION || "RvX3EGFTW4dO07yXnohrAIrqfFI6SV8k_cgTLEjGn1U",
+  },
 };
 
 export default function RootLayout({
@@ -30,8 +33,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" data-scroll-behavior="smooth" className={`${plex.variable} ${cormorant.variable} h-full`}>
-      <body className="min-h-full flex flex-col">
+    <html lang="en" data-scroll-behavior="smooth" className={`${plex.variable} ${cormorant.variable} min-h-dvh`}>
+      <body className="min-h-dvh w-full flex flex-col">
         {children}
       </body>
     </html>

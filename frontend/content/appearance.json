@@ -1,0 +1,19 @@
+{
+  "colors": {
+    "navy": "#0a1638",
+    "red": "#e31c23",
+    "cyan": "#71cbcc",
+    "background": "#fbfbfd",
+    "muted": "#4b5573"
+  },
+  "sections": [
+    { "id": "hero", "visible": true },
+    { "id": "solve", "visible": true },
+    { "id": "services", "visible": true },
+    { "id": "process", "visible": true },
+    { "id": "cases", "visible": true },
+    { "id": "why", "visible": true },
+    { "id": "faq", "visible": true },
+    { "id": "cta", "visible": true }
+  ]
+}

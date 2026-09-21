@@ -9,6 +9,8 @@ const de = {
   cases: "Fälle",
   why: "Warum wir",
   contact: "Kontakt",
+  insights: "Insights",
+  faq: "FAQ",
   book: "Diagnostik",
   menu: "Menü",
 };
@@ -20,6 +22,8 @@ const es = {
   cases: "Casos",
   why: "Por qué",
   contact: "Contacto",
+  insights: "Insights",
+  faq: "FAQ",
   book: "Diagnóstico",
   menu: "Menú",
 };

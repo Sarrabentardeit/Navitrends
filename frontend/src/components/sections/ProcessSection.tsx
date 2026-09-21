@@ -18,7 +18,7 @@ export default function ProcessSection() {
         <div className="relative mb-12">
           <motion.div
             aria-hidden
-            className="pointer-events-none absolute inset-x-0 top-[3.15rem] z-[1] hidden h-px origin-left bg-[#71cbcc]/70 md:block"
+            className="pointer-events-none absolute inset-x-0 top-[3.15rem] z-[1] hidden h-px origin-left bg-[var(--nt-cyan)]/70 md:block"
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: false, margin: "-80px" }}
@@ -26,10 +26,10 @@ export default function ProcessSection() {
           />
           <div className="grid md:grid-cols-3 gap-px bg-[#e6e9f2]">
             {t.process.steps.map((item) => (
-              <div key={item.n} className="bg-[#0a1638] text-white p-8 min-h-[200px] h-full">
-                <p className="text-[11px] tracking-[0.18em] uppercase text-[#71cbcc] mb-4">{item.n}</p>
+              <div key={item.n} className="bg-[var(--nt-navy)] text-white p-8 min-h-[200px] h-full">
+                <p className="text-[11px] tracking-[0.18em] uppercase text-[var(--nt-cyan)] mb-4">{item.n}</p>
                 <h3 className="serif text-[1.4rem] leading-snug mb-6">{item.title}</h3>
-                <p className="text-[12px] tracking-wide text-[#71cbcc]">
+                <p className="text-[12px] tracking-wide text-[var(--nt-cyan)]">
                   {t.process.deliverable}: {item.deliverable}
                 </p>
               </div>

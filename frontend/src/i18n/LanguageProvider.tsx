@@ -23,9 +23,16 @@ function isLocale(value: string | null): value is Locale {
   return value === "en" || value === "fr" || value === "de" || value === "es";
 }
 
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
+export function LanguageProvider({
+  children,
+  cmsEnglish,
+}: {
+  children: React.ReactNode;
+  cmsEnglish?: Messages | null;
+}) {
   const [locale, setLocaleState] = useState<Locale>("en");
   const [ready, setReady] = useState(false);
+  const english = cmsEnglish ?? en;
 
   useEffect(() => {
     const saved = window.localStorage.getItem(STORAGE_KEY);
@@ -55,10 +62,10 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const value = useMemo(
     () => ({
       locale,
-      t: locale === "fr" ? fr : en,
+      t: locale === "fr" ? fr : english,
       setLocale,
     }),
-    [locale]
+    [locale, english]
   );
 
   return (

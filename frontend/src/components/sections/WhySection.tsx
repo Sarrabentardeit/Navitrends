@@ -16,7 +16,7 @@ export default function WhySection() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#e6e9f2]">
           {t.why.reasons.map((item) => (
             <div key={item.title} className="bg-white p-7 min-h-[180px] h-full">
-              <h3 className="serif text-xl text-[#0a1638] mb-3">{item.title}</h3>
+              <h3 className="serif text-xl text-[var(--nt-navy)] mb-3">{item.title}</h3>
               <p className="text-sm text-[#5b6178] leading-relaxed">{item.text}</p>
             </div>
           ))}

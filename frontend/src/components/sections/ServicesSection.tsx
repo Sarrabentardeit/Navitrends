@@ -23,7 +23,7 @@ export default function ServicesSection() {
                 {family.items.map((item) => (
                   <li
                     key={item}
-                    className="border-t border-[#e6e9f2] py-2.5 text-sm text-[#0a1638] transition-colors duration-200 hover:text-[#e31c23]"
+                    className="border-t border-[#e6e9f2] py-2.5 text-sm text-[var(--nt-navy)] transition-colors duration-200 hover:text-[var(--nt-red)]"
                   >
                     {item}
                   </li>

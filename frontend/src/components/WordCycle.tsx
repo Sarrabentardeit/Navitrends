@@ -23,7 +23,7 @@ export default function WordCycle({ words }: { words: readonly string[] }) {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: "-40%", opacity: 0 }}
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute left-0 top-0 text-[#e31c23] italic whitespace-nowrap"
+          className="absolute left-0 top-0 text-[var(--nt-red)] italic whitespace-nowrap"
         >
           {word}
         </motion.span>

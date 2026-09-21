@@ -6,6 +6,8 @@ const en = {
     cases: "Case Studies",
     why: "Why Navitrends",
     contact: "Contact",
+    insights: "Insights",
+    faq: "FAQ",
     book: "Book a Diagnostic",
     menu: "Menu",
   },
@@ -22,6 +24,13 @@ const en = {
     body: "We map how the operation actually runs. Then we put ERP, automation and reporting underneath it — one team, one architecture.",
     talk: "Talk to us",
     work: "See the work",
+    diagram: {
+      erp: "ERP",
+      automation: "Automation",
+      core: "Core",
+      bi: "BI",
+      security: "Security",
+    },
   },
   solve: {
     kicker: "What We Solve",
@@ -226,6 +235,48 @@ const en = {
     privacy: "Privacy",
     terms: "Terms",
     legal: "Navitrends Ltd · 5 Brayford Square, London, United Kingdom E1 0SG",
+    cookies: "Cookies",
+  },
+  cookies: {
+    title: "Cookies",
+    body: "We use analytics cookies (Google Analytics) only if you accept, to measure visits and diagnostic requests. Essential cookies keep the site working. You can change this at any time.",
+    accept: "Accept",
+    reject: "Reject",
+  },
+  faq: {
+    kicker: "FAQ",
+    title: "Questions we are asked first.",
+    items: [
+      {
+        q: "What does Navitrends UK actually do?",
+        a: "We help SMEs and industrial organisations digitise operations: connect ERP and other systems, automate the work that still lives in Excel, and apply data or AI only where it moves a measurable KPI.",
+      },
+      {
+        q: "Do you replace our existing ERP?",
+        a: "Not by default. We map how the operation really runs, then we reset, connect or extend what you already have. A new ERP is only recommended when the current system cannot carry the process.",
+      },
+      {
+        q: "Who is this for?",
+        a: "Operations, finance and IT leaders in growing SMEs and industrial groups who are stuck with expert-dependent processes, disconnected data and reports rebuilt by hand.",
+      },
+      {
+        q: "What happens in the diagnostic?",
+        a: "A 30-minute call on one process, one bottleneck and one KPI. No product pitch before we understand the problem. You leave with a clear next step, not a software catalogue.",
+      },
+      {
+        q: "Where is Navitrends based?",
+        a: "Navitrends Ltd is registered at 5 Brayford Square, London E1 0SG, and works with organisations in the UK, Europe and North Africa.",
+      },
+    ],
+  },
+  site: {
+    phone: "+44 20 3996 2137",
+    email: "contact@navitrends.com",
+    address: "5 Brayford Square, London, United Kingdom E1 0SG",
+    logoUrl: "/logo.png",
+    ctaImageUrl: "/images/software-dashboard.jpg",
+    privacyHref: "/p/privacy",
+    termsHref: "/p/terms",
   },
 };
 

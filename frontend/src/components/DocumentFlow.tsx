@@ -43,7 +43,7 @@ export default function DocumentFlow() {
               width="56"
               height="68"
               fill="none"
-              stroke={i === 0 ? "#e31c23" : "#71cbcc"}
+              stroke={i === 0 ? "var(--nt-red)" : "var(--nt-cyan)"}
               strokeWidth="1.2"
             />
             <line
@@ -83,7 +83,7 @@ export default function DocumentFlow() {
             </text>
             <path
               d={`M${src.x} 104 L200 148`}
-              stroke="#71cbcc"
+              stroke="var(--nt-cyan)"
               strokeWidth="1.1"
               fill="none"
               strokeDasharray="220"
@@ -101,7 +101,7 @@ export default function DocumentFlow() {
               {prev && (
                 <path
                   d={`M200 ${prev.y} L200 ${stage.y}`}
-                  stroke={isLast ? "#e31c23" : "#71cbcc"}
+                  stroke={isLast ? "var(--nt-red)" : "var(--nt-cyan)"}
                   strokeWidth="1.15"
                   fill="none"
                   strokeDasharray="80"
@@ -113,7 +113,7 @@ export default function DocumentFlow() {
                 cx="200"
                 cy={stage.y}
                 r="22"
-                fill={isLast ? "#e31c23" : "#71cbcc"}
+                fill={isLast ? "var(--nt-red)" : "var(--nt-cyan)"}
                 animate={{ opacity: [0.08, 0.22, 0.08] }}
                 transition={{ duration: 3.2, repeat: Infinity, delay: i * 0.25 }}
               />
@@ -121,7 +121,7 @@ export default function DocumentFlow() {
                 cx="200"
                 cy={stage.y}
                 r="5"
-                fill={isLast ? "#e31c23" : i === 3 ? "#ffffff" : "#71cbcc"}
+                fill={isLast ? "var(--nt-red)" : i === 3 ? "#ffffff" : "var(--nt-cyan)"}
               />
               <text
                 x="228"

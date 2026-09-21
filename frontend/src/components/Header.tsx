@@ -5,22 +5,27 @@ import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Logo from "@/components/Logo";
 import LanguageSwitch from "@/components/LanguageSwitch";
-import { useLocale } from "@/i18n/LanguageProvider";
+import { useLocale, useT } from "@/i18n/LanguageProvider";
 import { navFor } from "@/i18n/nav";
+import { trackPhoneClick } from "@/lib/analytics";
 
-export default function Header() {
+export default function Header({ showInsights = false }: { showInsights?: boolean }) {
   const { locale } = useLocale();
-  const nav = navFor(locale);
+  const t = useT();
+  const nav = locale === "de" || locale === "es" ? navFor(locale) : t.nav;
+  const phone = t.site.phone;
+  const tel = phone.replace(/[^\d+]/g, "");
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
   const links = [
-    { label: nav.solve, href: "#solve" },
-    { label: nav.services, href: "#services" },
-    { label: nav.work, href: "#how-we-work" },
-    { label: nav.cases, href: "#case-studies" },
-    { label: nav.why, href: "#why" },
-    { label: nav.contact, href: "#contact" },
+    { label: nav.solve, href: "/#solve" },
+    { label: nav.services, href: "/#services" },
+    { label: nav.work, href: "/#how-we-work" },
+    { label: nav.cases, href: "/#case-studies" },
+    { label: nav.why, href: "/#why" },
+    ...(showInsights ? [{ label: nav.insights, href: "/insights" }] : []),
+    { label: nav.contact, href: "/#contact" },
   ];
 
   useEffect(() => {
@@ -40,7 +45,7 @@ export default function Header() {
     <header
       translate="no"
       className={cn(
-        "notranslate sticky top-0 z-50 bg-[#fbfbfd]/92 backdrop-blur-md",
+        "notranslate sticky top-0 z-50 bg-[color-mix(in_srgb,var(--background)_92%,transparent)] backdrop-blur-md",
         scrolled && "border-b border-[#e6e9f2]"
       )}
     >
@@ -49,7 +54,7 @@ export default function Header() {
           <Logo height={40} />
         </div>
 
-        <nav className="hidden min-w-0 items-center gap-4 text-[12px] whitespace-nowrap text-[#0a1638] xl:gap-6 xl:text-[13px] lg:flex">
+        <nav className="hidden min-w-0 items-center gap-4 text-[12px] whitespace-nowrap text-[var(--nt-navy)] xl:gap-6 xl:text-[13px] lg:flex">
           {links.map((item) => (
             <a key={item.href} href={item.href} className="nav-link shrink-0">
               {item.label}
@@ -59,13 +64,14 @@ export default function Header() {
 
         <div className="hidden shrink-0 items-center gap-3 xl:gap-5 lg:flex">
           <a
-            href="tel:+442039962137"
-            className="whitespace-nowrap text-[12px] text-[#4b5573] hover:text-[#0a1638]"
+            href={`tel:${tel}`}
+            className="whitespace-nowrap text-[12px] text-[var(--nt-muted)] hover:text-[var(--nt-navy)]"
+            onClick={trackPhoneClick}
           >
-            +44 20 3996 2137
+            {phone}
           </a>
           <LanguageSwitch />
-          <a href="#contact" className="btn btn-red h-10 shrink-0 whitespace-nowrap px-4 tracking-[0.08em] xl:px-5">
+          <a href="/#contact" className="btn btn-red h-10 shrink-0 whitespace-nowrap px-4 tracking-[0.08em] xl:px-5">
             {nav.book}
           </a>
         </div>
@@ -87,7 +93,7 @@ export default function Header() {
               </a>
             ))}
           </div>
-          <a href="#contact" className="btn btn-red" onClick={() => setOpen(false)}>
+          <a href="/#contact" className="btn btn-red" onClick={() => setOpen(false)}>
             {nav.book}
           </a>
         </div>

@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useT } from "@/i18n/LanguageProvider";
+import { trackDiagnosticSubmit, trackEmailClick, trackPhoneClick } from "@/lib/analytics";
 
 export default function CtaSection() {
   const t = useT();
@@ -14,18 +15,18 @@ export default function CtaSection() {
   return (
     <section id="contact" className="relative min-h-[720px] flex items-end scroll-mt-[4.4rem]">
       <Image
-        src="/images/software-dashboard.jpg"
+        src={t.site.ctaImageUrl || "/images/software-dashboard.jpg"}
         alt=""
         fill
         unoptimized
         className="object-cover object-center"
         sizes="100vw"
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#0a1638]/90 via-[#0a1638]/70 to-[#0a1638]/40" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[var(--nt-navy)]/90 via-[var(--nt-navy)]/70 to-[var(--nt-navy)]/40" />
 
       <div className="relative z-10 wrap w-full py-16 lg:py-20 grid lg:grid-cols-12 gap-10 items-end">
         <div className="lg:col-span-6 text-white pb-2">
-          <p className="text-[0.7rem] font-semibold tracking-[0.22em] uppercase text-[#71cbcc] mb-4">
+          <p className="text-[0.7rem] font-semibold tracking-[0.22em] uppercase text-[var(--nt-cyan)] mb-4">
             {t.cta.kicker}
           </p>
           <h2 className="serif text-[3rem] sm:text-[3.6rem] leading-[1.05] max-w-[14ch]">
@@ -34,12 +35,16 @@ export default function CtaSection() {
           <p className="mt-6 max-w-md text-white/75 leading-relaxed">{t.cta.body}</p>
           <p className="mt-4 max-w-md text-white/55 text-sm">{t.cta.aside}</p>
           <p className="mt-8 text-sm text-white/80">
-            <a href="mailto:contact@navitrends.com" className="hover:text-[#71cbcc]">
-              contact@navitrends.com
+            <a
+              href={`mailto:${t.site.email}`}
+              className="hover:text-[var(--nt-cyan)]"
+              onClick={trackEmailClick}
+            >
+              {t.site.email}
             </a>
             <span className="mx-3 text-white/30">|</span>
-            <a href="tel:+442039962137" className="hover:text-[#71cbcc]">
-              +44 20 3996 2137
+            <a href={`tel:${t.site.phone.replace(/[^\d+]/g, "")}`} className="hover:text-[var(--nt-cyan)]" onClick={trackPhoneClick}>
+              {t.site.phone}
             </a>
           </p>
           <p className="mt-3 text-[12px] text-white/50">{t.cta.legal}</p>
@@ -87,6 +92,7 @@ export default function CtaSection() {
                     body: JSON.stringify(payload),
                   });
                   if (!res.ok) throw new Error("send failed");
+                  trackDiagnosticSubmit();
                   setSent(true);
                 } catch {
                   setError("server");
@@ -97,7 +103,7 @@ export default function CtaSection() {
             >
               <motion.span
                 aria-hidden
-                className="absolute left-0 top-0 h-[3px] bg-[#e31c23]"
+                className="absolute left-0 top-0 h-[3px] bg-[var(--nt-red)]"
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
                 viewport={{ once: false }}
@@ -162,8 +168,8 @@ export default function CtaSection() {
                 {error === "server" && (
                   <p className="text-sm text-[#e31c23]">
                     {t.cta.serverBefore}{" "}
-                    <a href="mailto:contact@navitrends.com" className="underline">
-                      contact@navitrends.com
+                    <a href={`mailto:${t.site.email}`} className="underline">
+                      {t.site.email}
                     </a>
                     .
                   </p>

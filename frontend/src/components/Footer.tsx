@@ -2,8 +2,9 @@
 
 import Logo from "@/components/Logo";
 import { useT } from "@/i18n/LanguageProvider";
+import { openCookieSettings } from "@/lib/analytics";
 
-export default function Footer() {
+export default function Footer({ showInsights = false }: { showInsights?: boolean }) {
   const t = useT();
 
   return (
@@ -21,13 +22,21 @@ export default function Footer() {
         </div>
 
         <nav className="flex flex-wrap gap-5 text-sm text-[#4b5573]">
-          <a href="#services" className="hover:text-[#e31c23]">
+          <a href="/#services" className="hover:text-[#e31c23]">
             {t.footer.services}
           </a>
-          <a href="#case-studies" className="hover:text-[#e31c23]">
+          <a href="/#case-studies" className="hover:text-[#e31c23]">
             {t.footer.cases}
           </a>
-          <a href="#contact" className="hover:text-[#e31c23]">
+          <a href="/#faq" className="hover:text-[#e31c23]">
+            {t.nav.faq}
+          </a>
+          {showInsights ? (
+            <a href="/insights" className="hover:text-[#e31c23]">
+              {t.nav.insights}
+            </a>
+          ) : null}
+          <a href="/#contact" className="hover:text-[#e31c23]">
             {t.footer.contact}
           </a>
         </nav>
@@ -37,8 +46,11 @@ export default function Footer() {
           © {new Date().getFullYear()} {t.footer.legal}
         </p>
         <div className="flex gap-5">
-          <a href="#contact">{t.footer.privacy}</a>
-          <a href="#contact">{t.footer.terms}</a>
+          <a href={t.site.privacyHref}>{t.footer.privacy}</a>
+          <a href={t.site.termsHref}>{t.footer.terms}</a>
+          <button type="button" className="hover:text-[#0a1638]" onClick={openCookieSettings}>
+            {t.footer.cookies}
+          </button>
         </div>
       </div>
     </footer>

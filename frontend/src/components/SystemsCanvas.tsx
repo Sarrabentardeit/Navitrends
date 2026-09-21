@@ -3,22 +3,26 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 
-const nodes = [
-  { id: "erp", x: 120, y: 92, label: "ERP", fill: "#e31c23" },
-  { id: "auto", x: 320, y: 92, label: "Automation", fill: "#71cbcc" },
-  { id: "core", x: 220, y: 188, label: "Core", fill: "#ffffff" },
-  { id: "bi", x: 120, y: 292, label: "BI", fill: "#71cbcc" },
-  { id: "sec", x: 320, y: 292, label: "Security", fill: "#e31c23" },
+import { useT } from "@/i18n/LanguageProvider";
+
+const layout = [
+  { id: "erp", x: 120, y: 92, fill: "var(--nt-red)", key: "erp" as const },
+  { id: "auto", x: 320, y: 92, fill: "var(--nt-cyan)", key: "automation" as const },
+  { id: "core", x: 220, y: 188, fill: "#ffffff", key: "core" as const },
+  { id: "bi", x: 120, y: 292, fill: "var(--nt-cyan)", key: "bi" as const },
+  { id: "sec", x: 320, y: 292, fill: "var(--nt-red)", key: "security" as const },
 ];
 
 const lines = [
-  { d: "M120 92 L220 188", color: "#71cbcc", delay: 0 },
-  { d: "M320 92 L220 188", color: "#71cbcc", delay: 0.25 },
-  { d: "M220 188 L120 292", color: "#e31c23", delay: 0.5 },
-  { d: "M220 188 L320 292", color: "#e31c23", delay: 0.75 },
+  { d: "M120 92 L220 188", color: "var(--nt-cyan)", delay: 0 },
+  { d: "M320 92 L220 188", color: "var(--nt-cyan)", delay: 0.25 },
+  { d: "M220 188 L120 292", color: "var(--nt-red)", delay: 0.5 },
+  { d: "M220 188 L320 292", color: "var(--nt-red)", delay: 0.75 },
 ];
 
 export default function SystemsCanvas() {
+  const t = useT();
+  const nodes = layout.map((n) => ({ ...n, label: t.hero.diagram[n.key] }));
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { amount: 0.4 });
   const [playId, setPlayId] = useState(0);
@@ -32,7 +36,7 @@ export default function SystemsCanvas() {
   return (
     <div
       ref={ref}
-      className="relative flex min-h-[460px] items-center justify-center overflow-hidden bg-[#0a1638] px-8 py-12 lg:min-h-full"
+      className="relative flex min-h-[460px] items-center justify-center overflow-hidden bg-[var(--nt-navy)] px-8 py-12 lg:min-h-full"
     >
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.07]"
