@@ -5,9 +5,11 @@ import WordCycle from "@/components/WordCycle";
 import SystemsCanvas from "@/components/SystemsCanvas";
 import { useT } from "@/i18n/LanguageProvider";
 
+const ease = [0.22, 1, 0.36, 1] as const;
+
 const fade = {
   hidden: { opacity: 0, y: 18 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.65, ease } },
 };
 
 export default function HeroSection() {

@@ -304,7 +304,7 @@ function resolveUploadFile(name: string) {
   const base = path.basename(name);
   for (const dir of uploadDirs()) {
     const file = path.join(dir, base);
-    if (existsSync(file)) return { dir, file, name: base };
+    if (existsSync(/* turbopackIgnore: true */ file)) return { dir, file, name: base };
   }
   return { dir: uploads(), file: path.join(uploads(), base), name: base };
 }
@@ -331,10 +331,10 @@ export async function readUpload(rawName: string) {
   if (!name || name.includes("..") || !IMAGE_EXT.test(name)) return null;
   const found = resolveUploadFile(name);
   try {
-    const info = await stat(found.file);
+    const info = await stat(/* turbopackIgnore: true */ found.file);
     if (!info.isFile()) return null;
     return {
-      body: await readFile(found.file),
+      body: await readFile(/* turbopackIgnore: true */ found.file),
       contentType: CONTENT_TYPES[path.extname(name).toLowerCase()] || "application/octet-stream",
     };
   } catch {
