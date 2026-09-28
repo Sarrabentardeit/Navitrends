@@ -18,6 +18,7 @@ const ALLOWED = new Set([
   "blockquote",
   "div",
   "span",
+  "img",
 ]);
 
 export function isHtml(value: string) {
@@ -46,6 +47,13 @@ export function sanitizeHtml(raw: string) {
     const closing = full.startsWith("</");
     if (!ALLOWED.has(name)) return "";
     if (name === "br") return "<br>";
+    if (name === "img") {
+      if (closing) return "";
+      const src = attrs.match(/src\s*=\s*["']([^"']*)["']/i)?.[1] || "";
+      const alt = attrs.match(/alt\s*=\s*["']([^"']*)["']/i)?.[1] || "";
+      if (!src || !/^(\/|https?:)/i.test(src) || /javascript:/i.test(src)) return "";
+      return `<img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" />`;
+    }
     const mapped = name === "b" ? "strong" : name === "i" ? "em" : name;
     if (closing) return `</${mapped}>`;
     if (name === "a") {

@@ -39,7 +39,7 @@ export default async function InsightsPage() {
               <article key={post._id} className="border border-[#e6e9f2] bg-white p-8 h-full">
                 {post.coverUrl ? (
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img src={post.coverUrl} alt={post.title} className="mb-6 w-full object-cover" />
+                  <img src={post.coverUrl} alt={post.title} className="mb-6 aspect-[16/9] w-full object-cover" />
                 ) : null}
                 <p className="text-[11px] tracking-[0.18em] uppercase text-[#8b91a5]">
                   {post.publishedAt

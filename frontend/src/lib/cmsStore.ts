@@ -1,3 +1,4 @@
+import { existsSync } from "fs";
 import { mkdir, readdir, readFile, stat, unlink, writeFile } from "fs/promises";
 import path from "path";
 import en from "@/i18n/en";
@@ -271,6 +272,19 @@ export async function deletePage(id: string) {
 const IMAGE_EXT = /\.(png|jpe?g|webp|gif|svg|ico)$/i;
 const SKIP_ROOT = new Set(["window.svg", "file.svg", "vercel.svg"]);
 const PROTECTED = new Set(["/favicon.ico", "/favicon.png"]);
+const CONTENT_TYPES: Record<string, string> = {
+  ".png": "image/png",
+  ".jpg": "image/jpeg",
+  ".jpeg": "image/jpeg",
+  ".webp": "image/webp",
+  ".gif": "image/gif",
+  ".svg": "image/svg+xml",
+  ".ico": "image/x-icon",
+};
+
+function uploadDirs() {
+  return [uploads(), path.join(root(), "uploads"), path.join(process.cwd(), "uploads")];
+}
 
 type MediaMetaMap = Record<string, { alt?: string; title?: string }>;
 
@@ -286,15 +300,46 @@ function assertInside(file: string, folder: string) {
   }
 }
 
+function resolveUploadFile(name: string) {
+  const base = path.basename(name);
+  for (const dir of uploadDirs()) {
+    const file = path.join(dir, base);
+    if (existsSync(file)) return { dir, file, name: base };
+  }
+  return { dir: uploads(), file: path.join(uploads(), base), name: base };
+}
+
 function mediaUrlToFile(url: string) {
   const clean = url.split("?")[0];
   if (!clean.startsWith("/") || clean.includes("..") || !IMAGE_EXT.test(clean)) {
     throw new Error("Fichier invalide.");
   }
+  const name = path.basename(clean);
+  if (clean.startsWith("/uploads/")) {
+    const found = resolveUploadFile(name);
+    assertInside(found.file, found.dir);
+    return { clean, file: found.file, name };
+  }
   const relative = clean.replace(/^\/+/, "");
   const file = path.resolve(publicDir(), relative);
   assertInside(file, publicDir());
-  return { clean, file, name: path.basename(clean) };
+  return { clean, file, name };
+}
+
+export async function readUpload(rawName: string) {
+  const name = path.basename(rawName.split("?")[0]);
+  if (!name || name.includes("..") || !IMAGE_EXT.test(name)) return null;
+  const found = resolveUploadFile(name);
+  try {
+    const info = await stat(found.file);
+    if (!info.isFile()) return null;
+    return {
+      body: await readFile(found.file),
+      contentType: CONTENT_TYPES[path.extname(name).toLowerCase()] || "application/octet-stream",
+    };
+  } catch {
+    return null;
+  }
 }
 
 async function getMediaMeta(): Promise<MediaMetaMap> {
@@ -349,8 +394,10 @@ function usageFor(
 }
 
 export async function listMedia(): Promise<MediaRecord[]> {
-  const [uploaded, bundled, rootFiles, meta, settings, home, posts] = await Promise.all([
+  const extraUploadDirs = uploadDirs().filter((dir) => path.resolve(dir) !== path.resolve(uploads()));
+  const [uploaded, extraUploads, bundled, rootFiles, meta, settings, home, posts] = await Promise.all([
     collectImages(uploads(), "/uploads"),
+    Promise.all(extraUploadDirs.map((dir) => collectImages(dir, "/uploads"))),
     collectImages(path.join(publicDir(), "images"), "/images"),
     collectImages(publicDir(), ""),
     getMediaMeta(),
@@ -358,7 +405,13 @@ export async function listMedia(): Promise<MediaRecord[]> {
     getHome(),
     listPosts(),
   ]);
-  return [...uploaded, ...bundled, ...rootFiles]
+  const seen = new Set<string>();
+  const rows = [...uploaded, ...extraUploads.flat(), ...bundled, ...rootFiles].filter((row) => {
+    if (seen.has(row.url)) return false;
+    seen.add(row.url);
+    return true;
+  });
+  return rows
     .sort((a, b) => b.mtime.localeCompare(a.mtime))
     .map((row) => ({
       ...row,
@@ -369,11 +422,14 @@ export async function listMedia(): Promise<MediaRecord[]> {
 }
 
 export async function saveUpload(file: File) {
-  await ensureDir(uploads());
   const ext = path.extname(file.name) || ".jpg";
   const base = slugify(path.basename(file.name, ext)) || "image";
   const name = `${Date.now()}-${base}${ext.toLowerCase()}`;
-  await writeFile(path.join(uploads(), name), Buffer.from(await file.arrayBuffer()));
+  const body = Buffer.from(await file.arrayBuffer());
+  for (const dir of [uploads(), path.join(root(), "uploads")]) {
+    await ensureDir(dir);
+    await writeFile(path.join(dir, name), body);
+  }
   return `/uploads/${name}`;
 }
 
@@ -404,7 +460,16 @@ export async function updateMedia(input: {
   let url = current.clean;
 
   if (input.file) {
-    await writeFile(current.file, Buffer.from(await input.file.arrayBuffer()));
+    const body = Buffer.from(await input.file.arrayBuffer());
+    await writeFile(current.file, body);
+    if (url.startsWith("/uploads/")) {
+      for (const dir of uploadDirs()) {
+        const copy = path.join(dir, current.name);
+        if (path.resolve(copy) === path.resolve(current.file)) continue;
+        await ensureDir(dir);
+        await writeFile(copy, body).catch(() => undefined);
+      }
+    }
   }
 
   if (input.alt !== undefined || input.title !== undefined) {
@@ -449,9 +514,14 @@ export async function deleteUpload(name: string) {
 }
 
 export async function deleteMedia(url: string) {
-  const { clean, file } = mediaUrlToFile(url);
+  const { clean, file, name } = mediaUrlToFile(url);
   if (PROTECTED.has(clean)) throw new Error("Ce fichier est protégé.");
-  await unlink(file);
+  await unlink(file).catch(() => undefined);
+  if (clean.startsWith("/uploads/")) {
+    for (const dir of uploadDirs()) {
+      await unlink(path.join(dir, name)).catch(() => undefined);
+    }
+  }
   await retargetMedia(clean, null);
 }
 
